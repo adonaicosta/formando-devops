@@ -1,13 +1,3 @@
-0. Clonando o repositório:
-
-    - mkdir Getup
-    - git init
-    - git clone https://github.com/getupcloud/formando-devops.git
-    - cd formando-devops/desafio-linux
-    - vagrant up
-    
-    *localectl set-keymap br-abnt2    
-
 1. Kernel e Boot loader
 
 	O usuário vagrant está sem permissão para executar comandos root usando sudo. Sua tarefa consiste em reativar a permissão no sudo para esse usuário.
@@ -78,7 +68,7 @@
 	curl http://127.0.0.1
 	
 		Apesar de ter seguido o erro apresentado pelo comando "systemctl status nginx.service" e ter corrigido
-		a sintaxe do arquivo /etc/nginx/nginx.conf (o que pude atestar depois com o comando "nginx -t", o serviço ainda
+		a sintaxe do arquivo /etc/nginx/nginx.conf (o que pude atestar depois com o comando "nginx -t"), o serviço ainda
 		apresentava erros, no caso agora o binário /usr/sbin/nginx, e portanto tive que reinstalar o serviço:
 		
 					     yum remove nginx
@@ -184,8 +174,7 @@
 
 	ping 8.8.8.8
 
-		O comando já estava funcionando na máquina do desafio, talvez por eu ter alterado algumas regras do firewall
-		previamente, mas caso não estivesse funcionando uma solução seria acrescentar essa regra no firewall:
+		O comando já estava funcionando na máquina do desafio, mas caso não estivesse uma solução seria acrescentar essa regra no firewall:
 
 		iptables -A INPUT -p icmp --icmp-type 8 -s $WAN -j ACCEPT
 
@@ -239,20 +228,10 @@ Configure o logrotate para rotacionar arquivos do diretório /var/log/nginx
 			endscript
 		}
 		
-		onde:
-			/var/log/nginx/*.log: rotacionar todos os arquivos de log no diretório
-			daily: rotacionar diariamente
-			missingok: erros não podem ser registros escritos
-			notifempty: logs não serão rotacionados se estiverem vazios
-			rotate 10: mantem os últimos 10 arquivos de log 
-			prerotate/postrotate: diz ao logrotate que o script a ser executado começa na próxima linha
-			endscript: indica o fim do script
-			
 		testando a configuração do logrotate:
 			
 			logrotate -d /etc/logrotate.conf -> força a execução do logrotate
-			cat /var/lib/logrotate/logrotate.status -> mostra os arquivos rotacionados			
-		
+			cat /var/lib/logrotate/logrotate.status -> mostra os arquivos rotacionados		
 
 7. Filesystem
 	
@@ -266,21 +245,16 @@ Configure o logrotate para rotacionar arquivos do diretório /var/log/nginx
 	
 		Nessa tarefa procurei aproveitar a partição que já iria criar no 7.2 para poder estender
 		a partição LVM sdb1 para 5G, que tinha apenas 1G de tamanho e que já estava sem espaço.	
-			
-		Comandos utilizados para identificar o mapeamento entre volumes e partições
-		e também para checagem dos comandos e do resultado: 
 	
-			df -hT, fdisk -l, pvs, vgs, lvs, pvdisplay, vgdisplay, lvdisplay
-	
-		fdisk /dev/sdb -> para criar uma partição extendida /dev/sdb2		
-		mkfs.ext4 /dev/sdb2
-		pvcreate /dev/sdb2
-		vgextend data_vg /dev/sdb2
-		lvextend -L 5G /dev/data_vg/data_lv
-		umount /data
-		e2fsck /dev/data_vg/data_lv
-		resize2fs /dev/data_vg/data_lv
-		mount /data
+			fdisk /dev/sdb -> para criar uma partição extendida /dev/sdb2		
+			mkfs.ext4 /dev/sdb2
+			pvcreate /dev/sdb2
+			vgextend data_vg /dev/sdb2
+			lvextend -L 5G /dev/data_vg/data_lv
+			umount /data
+			e2fsck /dev/data_vg/data_lv
+			resize2fs /dev/data_vg/data_lv
+			mount /data
 
 	7.3 Criar partição XFS
 
@@ -288,4 +262,3 @@ Configure o logrotate para rotacionar arquivos do diretório /var/log/nginx
 	
 		yum install xfsprogs
 		mkfs.xfs /dev/sdc
-
