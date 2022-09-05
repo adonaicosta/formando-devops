@@ -71,7 +71,7 @@
 		passwd devel [d53kwpko]
 		usermod -aG wheel devel
 		
-	4. Systemd
+4. Systemd
 
 	Identifique e corrija os erros na inicialização do servico nginx. Em seguida, execute o comando abaixo (exatamente como está) e apresente o resultado. Note que o comando não deve falhar.
 	
