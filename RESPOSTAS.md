@@ -57,9 +57,22 @@
 	3.3 Análise de logs e configurações ssh
 
 	Utilizando a chave do arquivos id_rsa-desafio-devel.gz.b64 deste repositório, acesso a VM com o usuário devel:
+	
+		tail -f /var/log/audit/audit.log
+	
+		1ª tentativa (publickey, gssapi-keyex, gssapi-with-mic)
+			
+		2ª tentativa (publickey)
+				
+		3ª tentativa (unable to load Private Key)
 		
-		passwd devel [d53kwpko]
-		usermod -aG wheel devel
+		Hipótese 1: Na hora de realizar o "ssh-copy-id" está faltando a chave privada correspondente
+		
+		Hipótese 2: Pesquisando um pouco descobri que o OPENSSH tem agora seu próprio formato de chave privada
+		(diferindo justamente no header codificado em Base64). A solução seria conventer a chave para
+		o formato PEM com o comando "ssh-keygen -p -m PEM -f id_rsa". Como obtive um erro ao tentar a conversão
+		(Expecting: ANY PRIVAT KEY) acredito que a chave do repositório é uma chave pública, e para a conversão
+		seria necessário a chave privada.
 		
 4. Systemd
 
