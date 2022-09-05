@@ -71,7 +71,7 @@
 		Hipótese 2: Pesquisando um pouco descobri que o OPENSSH tem agora seu próprio formato de chave privada
 		(diferindo justamente no header codificado em Base64). A solução seria conventer a chave para
 		o formato PEM com o comando "ssh-keygen -p -m PEM -f id_rsa". Como obtive um erro ao tentar a conversão
-		(Expecting: ANY PRIVAT KEY) acredito que a chave do repositório é uma chave pública, e para a conversão
+		(Expecting: ANY PRIVATE KEY) acredito que a chave do repositório é uma chave pública, e para a conversão
 		seria necessário a chave privada.
 		
 4. Systemd
