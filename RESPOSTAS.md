@@ -191,11 +191,6 @@
 
 		iptables -A INPUT -p icmp --icmp-type 8 -s $WAN -j ACCEPT
 
-		Onde:
-		s -> indica network
-		i -> interface de entrada
-		o -> interface de saida
-
 	6.2 HTTP
 
 	Apresente a resposta completa, com headers, da URL https://httpbin.org/response-headers?hello=world
