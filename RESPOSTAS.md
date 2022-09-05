@@ -187,7 +187,8 @@
 
 	ping 8.8.8.8
 
-		O comando já estava funcionando na máquina do desafio, mas caso não estivesse uma solução seria acrescentar essa regra no firewall:
+		O comando já estava funcionando na máquina do desafio, mas caso não estivesse uma solução seria acrescentar
+		essa regra no firewall:
 
 		iptables -A INPUT -p icmp --icmp-type 8 -s $WAN -j ACCEPT
 
