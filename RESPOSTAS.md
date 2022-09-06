@@ -66,14 +66,14 @@
 				
 		3ª tentativa (unable to load Private Key)
 		
-		A saída que encontrei para esse problema e outros parecidos foi copiar manualmente as chaves para a pasta
+		A saída que encontrei para esse e outros problemas parecidos foi copiar manualmente as chaves para a pasta
 		authorized_keys e aplicar a permissão 600, mas como fiz isso sem saber ao certo porque funcionava, segue a
 		solução do colega Wesley Silva (linkedin.com/in/wesley-silva-49080059)
 		
 		"Pra resolver o problema da chave, você primeiro precisa descriptografar e descompactar o arquivo
 		(base64 -d id_rsa-desafio-linux-devel.gz.b64 | gzip -d > id_rsa). Quando você for usar a chave pelo
 		ssh, ele vai apresentar 2 problemas: o primeiro é que o formato da chave tá invalido; o segundo é que
-		o arquivo authorized_keys vai tá com uma permissão muito alta na pasta devel no servidor. No log secure
+		o arquivo authorized_keys vai tá com uma permissão muito alta na pasta devel no servidor. No log secure 
 		do servidor é possível ver esse segundo problema, então primeiro você precisa dar permissão 600	pro arquivo
 		authorized_keys. O problema da chave é a forma da quebra de linha. Existem duas formas de quebra de linha
 		mais usuais, a carriage-return e a newline. A chave está com a carriage-return e deveria estar com a newline.
