@@ -67,7 +67,7 @@
 		3ª tentativa (unable to load Private Key)
 		
 		A saída que encontrei para esse problema e outros parecidos foi copiar manualmente as chaves para a pasta
-		authorized_keys e aplicar a permissao 600, mas como fiz isso sem saber ao certo porque funcionava, segue a
+		authorized_keys e aplicar a permissão 600, mas como fiz isso sem saber ao certo porque funcionava, segue a
 		solução do colega Wesley Silva (linkedin.com/in/wesley-silva-49080059)
 		
 		"Pra resolver o problema da chave, você primeiro precisa descriptografar e descompactar o arquivo
