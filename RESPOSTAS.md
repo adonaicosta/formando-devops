@@ -66,13 +66,18 @@
 				
 		3ª tentativa (unable to load Private Key)
 		
-		Hipótese 1: Na hora de realizar o "ssh-copy-id" está faltando a chave privada correspondente
+		A saída que encontrei para esse problema e outros parecidos foi copiar manualmente as chaves para a pasta
+		authorized_keys e aplicar a permissao 600, mas como fiz isso sem saber ao certo porque funcionava, segue a
+		solução do colega Wesley Silva (linkedin.com/in/wesley-silva-49080059)
 		
-		Hipótese 2: Pesquisando um pouco descobri que o OPENSSH tem agora seu próprio formato de chave privada
-		(diferindo justamente no header codificado em Base64). A solução seria conventer a chave para
-		o formato PEM com o comando "ssh-keygen -p -m PEM -f id_rsa". Como obtive um erro ao tentar a conversão
-		(Expecting: ANY PRIVATE KEY) acredito que a chave do repositório é uma chave pública, e para a conversão
-		seria necessário a chave privada. Obs: passar manulamente a chave contorna o problema.
+		"Pra resolver o problema da chave, você primeiro descriptografa e descompactar o arquivo. Quando você for usar
+		a chave pelo o ssh, ele vai apresentar 2 problemas: o primeiro é que o formato da chave tá invalido;
+		o segundo é que o arquivo authorized_keys vai tá com uma permissão muito alta na pasta devel no servidor.
+		No log secure do servidor é possível ver esse segundo problema, então primeiro você precisa dar permissão 600
+		pro arquivo authorized_keys. O problema da chave é a forma da quebra de linha. Existem duas formas de quebra
+		de linha mais usuais, a carriage-return e a newline. A chave está com a carriage-return e deveria estar com a newline.
+		Existem duas formas de corrigir isso: a primeira é copiando o arquivo com o mouse, de dentro do editor.
+		A outra forma é trocar todos os carriage-return pelos os newline com o comando sed"
 		
 4. Systemd
 
