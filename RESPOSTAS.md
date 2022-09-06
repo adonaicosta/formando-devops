@@ -72,7 +72,7 @@
 		(diferindo justamente no header codificado em Base64). A solução seria conventer a chave para
 		o formato PEM com o comando "ssh-keygen -p -m PEM -f id_rsa". Como obtive um erro ao tentar a conversão
 		(Expecting: ANY PRIVATE KEY) acredito que a chave do repositório é uma chave pública, e para a conversão
-		seria necessário a chave privada. Obs: passar manulamente a chave contorna resolvendo o problema.
+		seria necessário a chave privada. Obs: passar manulamente a chave contorna o problema.
 		
 4. Systemd
 
