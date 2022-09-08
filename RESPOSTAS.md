@@ -88,7 +88,20 @@
 	
 		Apesar de ter seguido o erro apresentado pelo comando "systemctl status nginx.service" e ter corrigido
 		a sintaxe do arquivo /etc/nginx/nginx.conf (o que pude atestar depois com o comando "nginx -t"), o serviço ainda
-		apresentava erros, no caso agora o binário /usr/sbin/nginx, e portanto tive que reinstalar o serviço:
+		apresentava erros, no caso agora o binário /usr/sbin/nginx, e portanto tive que reinstalar o serviço (obs: acabei
+		não explicando o porquê dessa decisão, mas segue abaixo junto com a referência):
+		
+		" 3 - Instalação e Configuração Segura de Sistemas:
+			
+			Uma vez estabelecidas as políticas de segurança apropriadas para a sua rede (conforme exposto na seção 2), 
+			a etapa seguinte deve ser a configuração segura dos sistemas que estarão nessa rede.
+			Caso não exista uma documentação atualizada que detalhe a configuração de alguns ou todos os sistemas em uso na sua rede,
+			é aconselhável que estes sistemas sejam reinstalados observando-se as recomendações aqui expostas, ou, pelo menos,
+			que a sua configuração seja revisada e a documentação correspondente atualizada.
+			IMPORTANTE: um sistema só deverá ser conectado à Internet após os passos descritos nas seções 3.1 a 3.8 terem sido seguidos.
+			A pressa em disponibilizar um sistema na Internet pode levar ao seu comprometimento ." 
+			
+			https://www.cert.br/docs/seg-adm-redes/seg-adm-redes.html#subsec2.2
 		
 					     yum remove nginx
 					     yum install nginx
