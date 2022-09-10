@@ -8,6 +8,7 @@ Sua tarefa consiste em reativar a permissão no `sudo` para esse usuário.
     Na tarefa em questão está sendo solicitado para alterar a permissão sudo do usuário vagrant, mas como não foi informado nenhuma senha de acesso ao sistema isso deve ser feito pelo bootloader do linux, o GRUB.
     O GRUB passa algumas informações para o kernel, isto é, o núcleo do sistema operacional. Algumas dessas informações são: o sistemas de arquivos do root, o tipo de montagem de uma partição, entre outros. No caso da máquina do desafio, o GRUB tentará carregar o arquivo do kernel que está em /boot/vmlinuz-versão como usuário root (super usuário), em modo de leitura (ro, read only) e sem escrever na tela (quiet).
     Para ser possível fazer alterações no sistema, a imagem precisa carregar também em modo de escrita (rw, read and write) e o caminho do arquivo de inicialização precisa ser alterado para que seja possível acessar as linhas de comando através do shell, como se já estivéssemos logados. Aqui pode ser indicado qualquer shell que já venha compilado na imagem. Para informar o novo path de boot, uso o comando init=/bin/bash.
+    A partir desse momento, posso me certificar de que realmente estou no console como usuário root com o comando whoami, e seguir com as modificaç
 
   
 
