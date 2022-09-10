@@ -27,10 +27,26 @@ Dica: lembre-se que você possui acesso "físico" ao host.
     Aqui pode ser indicado qualquer shell que já venha compilado na imagem. Para informar o novo path de boot, uso o comando
     init=/bin/bash.
      
-    A partir desse momento, posso me certificar de que realmente estou no console como usuário root com o comando whoami, e seguir
-    com as modificações. Não é possível usar o comando visudo nesse modo, mas de maneira geral seu uso é recomendado para editar
+    A partir desse momento, posso me certificar de que realmente estou no console como usuário root com o comando "whoami",
+    além de conferir os comandos que estão disponíveis no shell informado com a linha "man builtins", e seguir com as
+    modificações. Não é possível usar o comando visudo nesse modo, mas de maneira geral seu uso é recomendado para editar 
     o arquivo /etc/sudoers, pois ele verifica se há erros de sintaxe ao salvá-lo. O arquivo não será salvo se houver erros.
     Se você abrir o arquivo com um editor de texto diferente, um erro de sintaxe pode resultar na perda do acesso ao sudo.
+    Outro detalhe importante é que o comando visudo não pode permitir a edição do arquivo /etc/sudoers simultaneamente, 
+    apenas travando o arquivo e se alguém tentar acessar o mesmo, receberá uma mensagem para tentar mais tarde.
+    
+    Regras do sudoers:
+    username    hosts=(users:groups)    commands   
+
+    Se você deseja usar o comando sem senha, use o parâmetro PASSWD:   
+    username    ALL(ALL:ALL)    NOPASSWD:ALL
+
+    No exemplo abaixo, o usuário A apenas inicia, interrompe e reinicie o serviço "httpd":
+    username    ALL=(root)      /usr/bin/systemctl, /usr/sbin/httpd start stop restart
+    
+    Portanto para dar ao usuário vagrant a permissão de executar comandos root usando sudo, a seguinte linha deve ser
+    escrita no sudoers:
+    vagrant     ALL=(ALL:ALL)    ALL    
     
     Opções do Visudo:
     
