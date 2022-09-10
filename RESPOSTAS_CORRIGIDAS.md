@@ -3,12 +3,12 @@
 O usuário `vagrant` está sem permissão para executar comandos root usando `sudo`.
 Sua tarefa consiste em reativar a permissão no `sudo` para esse usuário.
 
-  Bootloader é um software que permite a inicialização do sistema operacional de todos os dispositivos como computadores, smartphones, tablets e diversos equipamentos. Sempre que o dispositivo é ligado, ele irá acionar o bootloader para carregar o sistema operacional. Além disso, o software também funciona como garantia, caso ocorra alguma falha crítica com este sistema.
-  Um exemplo de como um bootloader funciona é em dispositivos Cisco, que armazena as configurações na variável de ambiente BOOT, presente na ROM do equipamento e que você pode visualizar com o comando set, e mesmo alterar o caminho da imagem da inicialização do sistema em caso de corrompimento ou outro tipo de problema, desde que tenha acesso físico ao dispositivo.
-  Na tarefa em questão está sendo solicitado para alterar a permissão sudo do usuário vagrant, mas como não foi informado nenhuma senha de acesso ao sistema isso deve ser feito pelo bootloader do linux, o GRUB.
-  O GRUB passa algumas informações para o kernel, isto é, o núcleo do sistema operacional. Algumas dessas informações são: o sistemas de arquivos do root, o tipo de montagem de uma partição, entre outros. No caso da máquina do desafio, o GRUB tentará carregar o arquivo do kernel que está em /boot/vmlinuz-versão como usuário root (super usuário), em modo de leitura (ro, read only) e sem escrever na tela (quiet).
-  Para ser possível fazer alterações no sistema, a imagem precisa carregar também em modo de escrita (rw, read and write) e o caminho do arquivo de inicialização precisa ser alterado para que seja possível acessar as linhas de comando através do shell, como se já estivéssemos logados. Aqui pode ser indicado qualquer shell que já venha compilado na imagem. Para informar o novo path de boot, uso o comando init=/bin/bash.
-  
+    Bootloader é um software que permite a inicialização do sistema operacional de todos os dispositivos como computadores, smartphones, tablets e diversos equipamentos. Sempre que o dispositivo é ligado, ele irá acionar o bootloader para carregar o sistema operacional. Além disso, o software também funciona como garantia, caso ocorra alguma falha crítica com este sistema.
+    Um exemplo de como um bootloader funciona é em dispositivos Cisco, que armazena as configurações na variável de ambiente BOOT, presente na ROM do equipamento e que você pode visualizar com o comando set, e mesmo alterar o caminho da imagem da inicialização do sistema em caso de corrompimento ou outro tipo de problema, desde que tenha acesso físico ao dispositivo.
+    Na tarefa em questão está sendo solicitado para alterar a permissão sudo do usuário vagrant, mas como não foi informado nenhuma senha de acesso ao sistema isso deve ser feito pelo bootloader do linux, o GRUB.
+    O GRUB passa algumas informações para o kernel, isto é, o núcleo do sistema operacional. Algumas dessas informações são: o sistemas de arquivos do root, o tipo de montagem de uma partição, entre outros. No caso da máquina do desafio, o GRUB tentará carregar o arquivo do kernel que está em /boot/vmlinuz-versão como usuário root (super usuário), em modo de leitura (ro, read only) e sem escrever na tela (quiet).
+    Para ser possível fazer alterações no sistema, a imagem precisa carregar também em modo de escrita (rw, read and write) e o caminho do arquivo de inicialização precisa ser alterado para que seja possível acessar as linhas de comando através do shell, como se já estivéssemos logados. Aqui pode ser indicado qualquer shell que já venha compilado na imagem. Para informar o novo path de boot, uso o comando init=/bin/bash.
+
   
 
 
