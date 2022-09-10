@@ -30,11 +30,21 @@ Dica: lembre-se que você possui acesso "físico" ao host.
     com um editor de texto diferente, um erro de sintaxe pode resultar na perda do acesso ao sudo.
     
     Opções do Visudo:
-    -c	Ative o modo somente verificação. O arquivo sudoers existente será verificado quanto a erros de sintaxe , proprietário e modo . Uma mensagem será impressa na saída padrão descrevendo o status dos sudoers , a menos que a opção -q tenha sido especificada. Se a verificação for concluída com êxito, o visudo sairá com o valor 0 . Se um erro for encontrado, o visudo será encerrado com o valor 1 .
-    -f sudoers	Especifique um local de arquivo alternativo para sudoers . Com esta opção, o visudo editará (ou verificará) o arquivo sudoers de sua escolha, em vez do padrão / etc / sudoers . O arquivo de bloqueio usado é o arquivo de sudoers especificado com “.tmp” anexado a ele. Apenas no modo somente verificação, o argumento para -f pode ser – , indicando que os sudoers serão lidos a partir da entrada padrão .
+    
+    -c	Ative o modo somente verificação. O arquivo sudoers existente será verificado quanto a erros de sintaxe , proprietário e modo .
+        Uma mensagem será impressa na saída padrão descrevendo o status dos sudoers , a menos que a opção -q tenha sido especificada.
+        Se a verificação for concluída com êxito, o visudo sairá com o valor 0 . Se um erro for encontrado, o visudo será encerrado
+        com o valor 1 .
+    -f sudoers	Especifique um local de arquivo alternativo para sudoers . Com esta opção, o visudo editará (ou verificará) o arquivo
+       sudoers de sua escolha, em vez do padrão / etc / sudoers . O arquivo de bloqueio usado é o arquivo de sudoers especificado com
+       .tmp anexado a ele. Apenas no modo somente verificação, o argumento para -f pode ser – , indicando que os sudoers serão lidos
+       a partir da entrada padrão .
     -h	A opção -h (ajuda) faz com que o visudo imprima uma mensagem curta de ajuda na saída e saída padrão.
-    -q	Ative o modo silencioso. Nesse modo, detalhes sobre erros de sintaxe não são impressos. Esta opção é útil apenas quando combinada com a opção -c .
-    -s	Habilite a verificação estrita do arquivo sudoers . Se um alias for usado antes de ser definido, o visudo considerará isso um erro de análise. Observe que não é possível diferenciar entre um alias e um nome de host ou nome de usuário que consiste apenas em letras maiúsculas, dígitos e o caractere sublinhado (‘ _ ‘).
+    -q	Ative o modo silencioso. Nesse modo, detalhes sobre erros de sintaxe não são impressos. Esta opção é útil apenas quando combinada
+        com a opção -c .
+    -s	Habilite a verificação estrita do arquivo sudoers . Se um alias for usado antes de ser definido, o visudo considerará isso um
+        erro de análise. Observe que não é possível diferenciar entre um alias e um nome de host ou nome de usuário que consiste apenas
+        em letras maiúsculas, dígitos e o caractere sublinhado.
     -V	A opção -V (versão) faz com que o visudo imprima seu número de versão e saia.
 
 ## 2. Usuários
