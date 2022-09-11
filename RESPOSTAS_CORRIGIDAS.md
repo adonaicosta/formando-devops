@@ -101,20 +101,53 @@ de par de chaves.
 Crie uma chave SSH do tipo ECDSA (qualquer tamanho) para o usuário `vagrant`. Em seguida, use essa mesma chave
 para acessar a VM.
 
+    Chaves SSH são uma forma segura de identificar usuários conhecidos, substituindo o "usuário e senha".
+    Sua vantagem está na quantidade de caracteres em relação à uma senha tradicional, fazendo com que ataques
+    bruteforce sejam inviabilizados devido ao tempo absurdo necessário para se "encontrar" a chave secreta
+    através de tentativa e erro.
+
+    Esta chave pode ser gerada tanto no Windows quanto no Linux, e são um "par", sendo a chave pública
+    (enviada para os servidores que você possui permissão para acessar) e a chave privada (somente você deve
+    possuir e pode ser criptografada com uma senha).
+
+    Você pode adicionar a sua chave pública a mais de um usuário ou até mesmo em servidores diferentes, desde que
+    você utilize sua chave privada para entrar nestes servidores (a qual por padrão fica salva em seu usuário no Linux).
+    
+    Como afirmando durante a correção das atividades, um cuidado que precisa ser tomado é sobre o uso de diversas
+    chaves no mesmo diretório: se no momento da criação da chave não for indicada a saída apropriada uma chave
+    de mesmo nome pode ser sobrescrita.
+    
+    Criação de uma chave ECDSA no linux (observação: chaves de maior comprimento costumam exigir maior processamento
+    computacional, e portanto em ambientes de nuvem e virtualizado isso pode ser uma preocupação):
+    
+    rsa - um algoritmo antigo baseado na dificuldade de fatorar números grandes. Um tamanho de chave de pelo menos
+    2048 bits é recomendado para RSA; 4096 bits é melhor. A RSA está ficando velha e avanços significativos estão sendo
+    feitos no factoring. A escolha de um algoritmo diferente pode ser aconselhável. É bem possível que o algoritmo RSA
+    se torne praticamente quebrável no futuro próximo. Todos os clientes SSH suportam este algoritmo.
+
+    dsa - um antigo algoritmo de assinatura digital do governo dos EUA. Baseia-se na dificuldade de calcular logaritmos
+    discretos. Um tamanho de chave de 1024 normalmente seria usado com ele. O DSA em sua forma original não é mais recomendado.
+
+    ecdsa - um novo algoritmo de assinatura digital padronizado pelo governo dos EUA, usando curvas elípticas. Este é
+    provavelmente um bom algoritmo para aplicações atuais. Apenas três tamanhos de chave são suportados: 256, 384 e 521 bits.
+    Recomenda-se sempre usá-lo com 521 bits, pois as chaves ainda são pequenas e provavelmente mais seguras do que as chaves menores
+    (mesmo que elas também devam ser seguras). A maioria dos clientes SSH agora oferece suporte a esse algoritmo.
+
+    ed25519 - este é um novo algoritmo adicionado no OpenSSH. O suporte para ele em clientes ainda não é universal.
+    Assim, seu uso em aplicações de uso geral pode ainda não ser aconselhável.
+    
+    Normalmente, a ferramenta cria o nome do arquivo no qual armazenar a chave. No entanto, ele também pode ser especificado
+    na linha de comando usando a opção -f (filename).
+
+    -> ssh-keygen -f ~/ -t ecdsa -b 521
+    
     Para rodar um servidor OpenSSH, você deve primeiramente certificar-se de ter os pacotes RPM apropriados instalados.
     O pacote openssh-server é necessário e depende do pacote openssh. O daemon OpenSSH usa o arquivo de configuração
     /etc/ssh/sshd_config. O arquivo de configuração default deve ser suficiente na maioria dos casos.
     
     Para iniciar o serviço OpenSSH, use o comando /sbin/service sshd start. Para parar o servidor OpenSSH, use o comando
     /sbin/service sshd stop. Se você executar uma reinstalação e houver clientes conectados ao sistema com alguma
-    ferramenta OpenSSH antes da reinstalação, os usuários cliente verão a seguinte mensagem após a reinstalação:
-
-    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-    @    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
-    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-    IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
-    Someone could be eavesdropping on you right now (man-in-the-middle attack)!
-    It is also possible that the RSA host key has just been changed.
+    ferramenta OpenSSH antes da reinstalação, os usuários cliente verão uma mensagem de WARNING.
 
     O sistema reinstalado cria um novo conjunto de chaves de identificação, apesar do aviso sobre a mudança da chave RSA
     da máquina. Se você deseja guardar as chaves geradas para o sistema, faça um backup dos arquivos /etc/ssh/ssh_host*key*
