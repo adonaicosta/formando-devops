@@ -142,7 +142,7 @@ para acessar a VM.
 
     1 - Certifique-se de estar logado como vagrant no host no qual o servidor SSH reside
     2 - Mude para o diretório inicial para vagrant
-    3 - Crie o diretório .ssh em /home/vagrant.
+    3 - Crie o diretório .ssh em /home/vagrant
     4 - Verifique as configurações de permissão para .ssh
     5 - Mude as configurações de permissão de .ssh para rwx------
     6 - Verifica as novas configurações de permissão para .ssh
@@ -191,8 +191,8 @@ Dica: o arquivo pode ter sido criado em um SO que trata o fim de linha de forma 
     
     O comando tr é um comando básico no Linux/Unix, porém não é muito conhecido ou utilizado com frequência.
     Sua função básica é substituir (traduzir) o conteúdo de uma string (texto) recebido via entrada padrão
-    (STDIN) de um formato para outro, ou ainda excluir caracteres. E para converter com quebra de linha no
-    Linux de um arquivo do padrão DOS para o padrão utilizado pelo Linux é simples:
+    (STDIN) de um formato para outro, ou ainda excluir caracteres. E para converter um arquivo com quebra
+    de linha no padrão DOS para o padrão utilizado pelo Linux é simples:
     
     -> tr -d '\r' id_rsa-desafio-linux-devel > id_rsa-desafio-linux-devel   
 
