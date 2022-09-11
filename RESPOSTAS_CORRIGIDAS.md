@@ -194,7 +194,7 @@ Dica: o arquivo pode ter sido criado em um SO que trata o fim de linha de forma 
     (STDIN) de um formato para outro, ou ainda excluir caracteres. E para converter um arquivo com quebra
     de linha no padrão DOS para o padrão utilizado pelo Linux é simples:
     
-    -> tr -d '\r' id_rsa-desafio-linux-devel > id_rsa-desafio-linux-devel   
+    -> tr -d '\r' < id_rsa-desafio-linux-devel > id_rsa-desafio-linux-devel.unix   
 
     dos2unix é uma ferramenta para converter quebras de linha em um arquivo de texto do formato DOS para
     o formato UNIX e vice-versa.
