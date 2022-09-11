@@ -156,14 +156,14 @@ Dica: o arquivo pode ter sido criado em um SO que trata o fim de linha de forma 
     os dados binários são convertidos em ASCII. Encode Base64 é uma codificação muito usada para transmitir
     dados binarios em forma de texto, ou tambem para ofuscar dados onde não seja necessario tanta segurança.
     
-    Para decodificar um arquivo de texto codificado, teremos que usar a opção –decode ou -d.
+    Para decodificar um arquivo de texto codificado, teremos que usar a opção –decode ou -d:
     
-    base64 -d id_rsa-desafio-linux-devel.gz.b64 > id_rsa-desafio-linux-devel.gz
+    -> base64 -d id_rsa-desafio-linux-devel.gz.b64 > id_rsa-desafio-linux-devel.gz
     
     O comando gzip pode ser utilizado como uma ferramenta de compressão de arquivos no Unix.
     Seu uso é simples, e a flag -d indica que queremos a descompactação:
     
-    gzip -d id_rsa-desafio-linux-devel.gz > id_rsa-desafio-linux-devel
+    -> gzip -d id_rsa-desafio-linux-devel.gz > id_rsa-desafio-linux-devel
     
     
 ## 4. Systemd
