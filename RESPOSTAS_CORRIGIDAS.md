@@ -64,7 +64,7 @@ Crie um usuário com as seguintes características:
         Sendo assim, esse usuário deve ser criado sem um diretório próprio, uma vez que pode se tratar apenas de uma conta
         de gerenciamento.
         
-        Ainda no bash que foi iniciado pelo grub, alguns comandos precisam ser indicados com o path inteiro para que possam
+        Ainda no Bash que foi iniciado pelo GRUB, alguns comandos precisam ser indicados com o path inteiro para que possam
         ser executados, e para saber o caminho de um determinado comando a sintaxe é "whereis comando". Além disso, algumas
         flags precisam acompanhar esse comando:
         
