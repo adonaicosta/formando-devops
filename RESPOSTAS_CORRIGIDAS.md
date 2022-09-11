@@ -59,12 +59,14 @@ Crie um usuário com as seguintes características:
 - grupos: `getup` (principal, GID=2222) e `bin`
 - permissão `sudo` para todos os comandos, sem solicitação de senha
 
-        Apesar de não ter sido especificado a função desse usuário no sistema, um set mínimo de configurações deve ser aplicado,
-        tendo em vista tanto o princípio de privilégios mínimos quanto a boas práticas de criação de usuários. Sendo assim,
-        esse usuário deve ser criado sem um diretório próprio, uma vez que pode se tratar apenas de uma conta de gerenciamento.
-        Ainda no bash que foi iniciado pelo grub, alguns comandos precisam ser indicados com o path inteiro para que possam ser
-        executados, e para saber o caminho de um determinado comando a sintaxe é "whereis comando". Além disso, algumas flags
-        precisam acompanhar esse comando:
+        Apesar de não ter sido especificado a função desse usuário no sistema, um set mínimo de configurações deve ser
+        aplicado, tendo em vista tanto o princípio de privilégios mínimos quanto a boas práticas de criação de usuários.
+        Sendo assim, esse usuário deve ser criado sem um diretório próprio, uma vez que pode se tratar apenas de uma conta
+        de gerenciamento.
+        
+        Ainda no bash que foi iniciado pelo grub, alguns comandos precisam ser indicados com o path inteiro para que possam
+        ser executados, e para saber o caminho de um determinado comando a sintaxe é "whereis comando". Além disso, algumas
+        flags precisam acompanhar esse comando:
         
         -> /usr/sbin/useradd -M -U -G bin getup && /usr/sbin/groupmod -g 2222 getup
 
