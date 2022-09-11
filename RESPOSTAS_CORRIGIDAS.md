@@ -97,22 +97,41 @@ de par de chaves.
 ### 3.2 Criação de chaves
 
 Crie uma chave SSH do tipo ECDSA (qualquer tamanho) para o usuário `vagrant`. Em seguida, use essa mesma chave
-para acessar a VM.    
+para acessar a VM.
 
+    Para rodar um servidor OpenSSH, você deve primeiramente certificar-se de ter os pacotes RPM apropriados instalados.
+    O pacote openssh-server é necessário e depende do pacote openssh. O daemon OpenSSH usa o arquivo de configuração
+    /etc/ssh/sshd_config. O arquivo de configuração default deve ser suficiente na maioria dos casos.
+    
+    Para iniciar o serviço OpenSSH, use o comando /sbin/service sshd start. Para parar o servidor OpenSSH, use o comando
+    /sbin/service sshd stop. Se você executar uma reinstalação e houver clientes conectados ao sistema com alguma ferramenta
+    OpenSSH antes da reinstalação, os usuários cliente verão a seguinte mensagem após a reinstalação:
+
+    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+    @    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+    IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+    Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+    It is also possible that the RSA host key has just been changed.
+
+    O sistema reinstalado cria um novo conjunto de chaves de identificação, apesar do aviso sobre a mudança da chave RSA da máquina.
+    Se você deseja guardar as chaves geradas para o sistema, faça um backup dos arquivos /etc/ssh/ssh_host*key* e armazene-os após
+    a reinstalação. Este processo retém a identidade do sistema e, quando os clientes tentarem conectar o sistema após a reinstalação,
+    não receberão a mensagem de aviso.
+    
     Quando o cliente SSH inicia a autenticação de cliente (enviando uma chave pública e uma assinatura para o servidor SSH),
     o servidor SSH deve ser capaz de verificar se ele foi configurado com a mesma chave pública recebida do cliente.
-
     Portanto, a próxima etapa é configurar o servidor SSH com a chave pública. Duas subetapas são necessárias:
 
-    Transfira o arquivo de chave pública para o host no qual o servidor SSH reside.
-    Configure o servidor SSH com a chave pública.    
+    -> Transfira o arquivo de chave pública para o host no qual o servidor SSH reside.
+    -> Configure o servidor SSH com a chave pública.    
  
     Deve-se transferir o arquivo de chave pública para o host no qual o servidor SSH reside. Embora essa seja uma chave pública,
     é necessário escolher um método seguro para transferir o arquivo de chave pública. Por exemplo, é possível usar uma sessão de
     Secure FTP (SFTP) ou colocar o arquivo em alguma mídia física e ter a chave transferida com segurança.
 
     Dependendo da plataforma, da implementação e da configuração do servidor SSH, cada servidor pode ter alguns requisitos diferentes
-    para configurar a chave pública. Como um exemplo, no transporte OpenSSH de SSH disponível no Red Hat Linux por padrão, a chave
+    para configurar a chave pública. Como um exemplo, no transporte OpenSSH de SSH disponível no Red Hat Linux, a chave
     pública é anexada ao arquivo $HOME/.ssh/authorized_keys, em que $HOME é o diretório inicial do ID do usuário no qual o cliente
     SSH efetua logon. Por exemplo, se você configurasse o cliente SSH com um ID do usuário vagrant, o caminho para o arquivo
     authorized_keys poderia ser: /home/vagrant/.ssh/authorized_keys.
