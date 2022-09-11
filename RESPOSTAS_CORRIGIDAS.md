@@ -107,10 +107,58 @@ O servidor SSH está configurado para aceitar autenticação por senha. No entan
 pois apresenta alto nivel de fragilidade. Voce deve desativar autenticação por senhas e permitir apenas o uso
 de par de chaves.
 
+
 ### 3.2 Criação de chaves
 
 Crie uma chave SSH do tipo ECDSA (qualquer tamanho) para o usuário `vagrant`. Em seguida, use essa mesma chave
 para acessar a VM.
+
+    
+
+    Quando o cliente SSH inicia a autenticação de cliente (enviando uma chave pública e uma assinatura para o servidor SSH),
+    o servidor SSH deve ser capaz de verificar se ele foi configurado com a mesma chave pública recebida do cliente.
+
+    Portanto, a próxima etapa é configurar o servidor SSH com a chave pública. Duas subetapas são necessárias:
+
+    Transfira o arquivo de chave pública para o host no qual o servidor SSH reside.
+    Configure o servidor SSH com a chave pública.    
+ 
+    Deve-se transferir o arquivo de chave pública para o host no qual o servidor SSH reside. Embora essa seja uma chave pública,
+    é necessário escolher um método seguro para transferir o arquivo de chave pública. Por exemplo, é possível usar uma sessão de
+    Secure FTP (SFTP) ou colocar o arquivo em alguma mídia física e ter a chave transferida com segurança.
+
+    Dependendo da plataforma, da implementação e da configuração do servidor SSH, cada servidor pode ter alguns requisitos diferentes
+    para configurar a chave pública. Como um exemplo, no transporte OpenSSH de SSH disponível no Red Hat Linux por padrão, a chave
+    pública é anexada ao arquivo $HOME/.ssh/authorized_keys, em que $HOME é o diretório inicial do ID do usuário no qual o cliente
+    SSH efetua logon. Por exemplo, se você configurasse o cliente SSH com um ID do usuário vagrant, o caminho para o arquivo
+    authorized_keys poderia ser: /home/vagrant/.ssh/authorized_keys.
+
+    Etapas envolvidas na configuração do servidor SSH:
+
+    1 - Certifique-se de estar logado como vagrant no host no qual o servidor SSH reside
+    2 - Mude para o diretório inicial para vagrant
+    3 - Crie o diretório .ssh em /home/vagrant.
+    4 - Verifique as configurações de permissão para .ssh
+    5 - Mude as configurações de permissão de .ssh para rwx------
+    6 - Verifica as novas configurações de permissão para .ssh
+    7 - Mude para o diretório .ssh 
+    8 - Anexe o arquivo de chave pública ao arquivo authorized_keys
+    9 - Verifique as configurações de permissão para authorized_keys
+    10 - Muda as configurações de permissão de authorized_keys para rw-------
+    11 - Verifica as novas configuraçoes de permissão para authorized_keys
+    12 - É possível excluir vagrant.id_ecdsa.pub a partir desse momento
+    
+    2 - cd /home/vagrant
+    3 - mkdir .ssh
+    4 - ls -la 
+    5 - chmod 700 .ssh
+    6 - ls -la
+    7 - cd .ssh
+    8 - cat vagrant.id_ecdsa.pub >> authorized_keys
+    9 - ls -l
+    10 - chmod 600 authorized_keys
+    11 - ls -l
+    12 - rm vagrant.id_dsa.pub    
 
 ### 3.3 Análise de logs e configurações ssh
 
