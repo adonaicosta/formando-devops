@@ -41,7 +41,7 @@ Dica: lembre-se que você possui acesso "físico" ao host.
     Se você deseja usar o comando sem senha, use o parâmetro PASSWD:   
     username    ALL(ALL:ALL)    NOPASSWD:ALL
 
-    No exemplo abaixo, o usuário A apenas inicia, interrompe e reinicie o serviço "httpd":
+    No exemplo abaixo, o usuário apenas inicia, interrompe e reinicie o serviço "httpd":
     username    ALL=(root)      /usr/bin/systemctl, /usr/sbin/httpd start stop restart
     
     Portanto para dar ao usuário vagrant a permissão de executar comandos root usando sudo, a seguinte linha deve ser
