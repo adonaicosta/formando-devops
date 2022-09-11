@@ -21,11 +21,11 @@ Dica: lembre-se que você possui acesso "físico" ao host.
     o tipo de montagem de uma partição, entre outros. 
     
     No caso da máquina do desafio, o GRUB tentará carregar o arquivo do kernel que está em /boot/vmlinuz-versão como usuário
-    root (super usuário), em modo de leitura (ro, read only) e sem escrever na tela (quiet). Para ser possível fazer alterações
-    no sistema, a imagem precisa carregar também em modo de escrita (rw, read and write) e o caminho do arquivo de inicialização
-    precisa ser alterado para que seja possível acessar as linhas de comando através do shell, como se já estivéssemos logados.
-    Aqui pode ser indicado qualquer shell que já venha compilado na imagem. Para informar o novo path de boot, uso o comando
-    init=/bin/bash.
+    root (super usuário), em modo de leitura (ro, read only) e sem escrever na tela (quiet). Para ser possível fazer 
+    alterações no sistema, a imagem precisa carregar também em modo de escrita (rw, read and write) e o caminho do arquivo
+    de inicialização precisa ser alterado para que seja possível acessar as linhas de comando através do shell, como se já
+    estivéssemos logados. Aqui pode ser indicado qualquer shell que já venha compilado na imagem. Para informar o novo path
+    de boot, uso o comando init=/bin/bash.
      
     A partir desse momento, posso me certificar de que realmente estou no console como usuário root com o comando "whoami",
     além de conferir os comandos que estão disponíveis no shell informado com a linha "man builtins", e seguir com as
@@ -72,32 +72,31 @@ Dica: lembre-se que você possui acesso "físico" ao host.
 
 Crie um usuário com as seguintes características:
 
-- username: `getup` (UID=1111)
-- grupos: `getup` (principal, GID=2222) e `bin`
-- permissão `sudo` para todos os comandos, sem solicitação de senha
+    - username: `getup` (UID=1111)
+    - grupos: `getup` (principal, GID=2222) e `bin`
+    - permissão `sudo` para todos os comandos, sem solicitação de senha
 
+        Apesar de não ter sido especificado a função desse usuário no sistema, um set mínimo de configurações deve ser aplicado, tendo em
+        vista tanto o princípio de privilégios mínimos quanto a boas práticas de criação de usuários. Sendo assim, esse usuário deve ser
+        criado sem um diretório no /home, uma vez que pode se tratar apenas de uma conta de gerenciamento.
+        Ainda no bash que foi iniciado pelo grub, alguns comandos precisam ser indicados com o path inteiro para que possam ser executado,
+        e para saber o caminho de um determinado comando a sintaxe é "whereis comando". Além disso, algumas flags precisam acompanhar esse
+        comando:
+        
+        -> /usr/sbin/useradd -M -U -G bin getup && /usr/sbin/groupmod -g 2222 getup
 
-    Apesar de não ter sido especificado a função desse usuário no sistema, um set mínimo de configurações deve ser aplicado, tendo em
-    vista tanto o princípio de privilégios mínimos quanto a boas práticas de criação de usuários. Sendo assim, esse usuário deve ser
-    criado sem um diretório no /home, uma vez que pode se tratar apenas de uma conta de gerenciamento.
-    Ainda no bash que foi iniciado pelo grub, alguns comandos precisam ser indicados com o path inteiro para que possam ser executado,
-    e para saber o caminho de um determinado comando a sintaxe é "whereis comando". Além disso, algumas flags precisam acompanhar esse
-    comando:
-    
-    -> /usr/sbin/useradd -M -U -G bin getup && /usr/sbin/groupmod -g 2222 getup
-    
-    Onde:
-    
-    useradd    
-    -M garante que um diretório NÃO seja criado para o novo usuário
-    -U cria o grupo inicial do usuário com o mesmo nome (importante caso a varíavel de ambiente não esteja configurada para fazer isso)
-    -G adiciona o usuário a um grup extra, no caso o grupo bin
-    
-    group
-    -g alera o gid do grupo especificado
-    
-    Além disso, o arquivo sudoers também deve ser modificado para não pedir senha para esse usuário ao usar o comando sudo:    
-    ->  getup    ALL(ALL:ALL)    NOPASSWD:ALL
+        Onde:
+
+        useradd    
+        -M garante que um diretório NÃO seja criado para o novo usuário
+        -U cria o grupo inicial do usuário com o mesmo nome (importante caso a varíavel de ambiente não esteja configurada para fazer isso)
+        -G adiciona o usuário a um grup extra, no caso o grupo bin
+
+        group
+        -g alera o gid do grupo especificado
+
+        Além disso, o arquivo sudoers também deve ser modificado para não pedir senha para esse usuário ao usar o comando sudo:    
+        ->  getup    ALL(ALL:ALL)    NOPASSWD:ALL
     
 
 ## 3. SSH
