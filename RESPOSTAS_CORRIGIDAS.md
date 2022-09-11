@@ -112,7 +112,7 @@ para acessar a VM.
     ou até mesmo em servidores diferentes, desde que você utilize sua chave privada para entrar nestes servidores
     (a qual por padrão fica salva em seu usuário no Linux).
     
-    Tipos De Chaves:
+    Tipos de Algorítmos
     
     rsa - um algoritmo antigo baseado na dificuldade de fatorar números grandes. Um tamanho de chave de pelo menos
     2048 bits é recomendado para RSA; 4096 bits é melhor. A RSA está ficando velha e avanços significativos estão sendo
