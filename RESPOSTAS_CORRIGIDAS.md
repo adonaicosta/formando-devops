@@ -76,6 +76,30 @@ Crie um usuário com as seguintes características:
 - grupos: `getup` (principal, GID=2222) e `bin`
 - permissão `sudo` para todos os comandos, sem solicitação de senha
 
+
+    Apesar de não ter sido especificado a função desse usuário no sistema, um set mínimo de configurações deve ser aplicado, tendo em
+    vista tanto o princípio de privilégios mínimos quanto a boas práticas de criação de usuários. Sendo assim, esse usuário deve ser
+    criado sem um diretório no /home, uma vez que pode se tratar apenas de uma conta de gerenciamento.
+    Ainda no bash que foi iniciado pelo grub, alguns comandos precisam ser indicados com o path inteiro para que possam ser executado,
+    e para saber o caminho de um determinado comando a sintaxe é "whereis comando". Além disso, algumas flags precisam acompanhar esse
+    comando:
+    
+    -> /usr/sbin/useradd -M -U -G bin getup && /usr/sbin/groupmod -g 2222 getup
+    
+    Onde:
+    
+    useradd    
+    -M garante que um diretório NÃO seja criado para o novo usuário
+    -U cria o grupo inicial do usuário com o mesmo nome (importante caso a varíavel de ambiente não esteja configurada para fazer isso)
+    -G adiciona o usuário a um grup extra, no caso o grupo bin
+    
+    group
+    -g alera o gid do grupo especificado
+    
+    Além disso, o arquivo sudoers também deve ser modificado para não pedir senha para esse usuário ao usar o comando sudo:    
+    ->  getup    ALL(ALL:ALL)    NOPASSWD:ALL
+    
+
 ## 3. SSH
 
 ### 3.1 Autenticação confiável
