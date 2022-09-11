@@ -165,6 +165,13 @@ Dica: o arquivo pode ter sido criado em um SO que trata o fim de linha de forma 
     
     -> gzip -d id_rsa-desafio-linux-devel.gz > id_rsa-desafio-linux-devel
     
+    O final de linha padrão DOS / Windows é diferente do padrão Unix. O comando tr é um comando básico no Linux/Unix,
+    porém não é muito conhecido ou utilizado com frequência. Sua função básica é substituir (traduzir) o conteúdo de
+    uma string (texto) recebido via entrada padrão (STDIN) de um formato para outro, ou ainda excluir caracteres.
+    E para converter com quebra de linha no Linux de um arquivo do padrão DOS para o padrão utilizado pelo Linux é simples:
+    
+    -> tr -d '\r' id_rsa-desafio-linux-devel > id_rsa-desafio-linux-devel
+    
     
 ## 4. Systemd
 
