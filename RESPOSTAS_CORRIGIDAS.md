@@ -90,7 +90,7 @@ Crie um usuário com as seguintes características:
         useradd    
         -M garante que um diretório NÃO seja criado para o novo usuário
         -U cria o grupo inicial do usuário com o mesmo nome (importante caso a varíavel de ambiente não esteja configurada para fazer isso)
-        -G adiciona o usuário a um grup extra, no caso o grupo bin
+        -G adiciona o usuário a um grupo extra, no caso o grupo bin
 
         group
         -g alera o gid do grupo especificado
