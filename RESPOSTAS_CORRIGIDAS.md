@@ -151,6 +151,16 @@ Utilizando a chave do arquivo [id_rsa-desafio-linux-devel.gz.b64](id_rsa-desafio
 
 Dica: o arquivo pode ter sido criado em um SO que trata o fim de linha de forma diferente.
 
+    Um arquivo é enviado pela Internet (normalmente usando uma API) como uma representação de cadeia de caracteres
+    codificada em Base64. Ao permitir que os usuários convertam facilmente um arquivo em uma cadeia de caracteres
+    Base64 e vice-versa, a transferência de arquivos pela Internet é facilitada.Nesse processo de codificação,
+    os dados binários são convertidos em ASCII. Encode Base64 é uma codificação muito usada para transmitir
+    dados binarios em forma de texto, ou tambem para ofuscar dados onde não seja necessario tanta segurança.
+    
+    Para decodificar um arquivo de texto codificado, teremos que usar a opção –decode ou -d.
+    
+    base64 -d id_rsa-desafio-linux-devel.gz.b64 
+    
 ## 4. Systemd
 
 Identifique e corrija os erros na inicialização do servico `nginx`.
