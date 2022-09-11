@@ -25,7 +25,8 @@ Dica: lembre-se que você possui acesso "físico" ao host.
     alterações no sistema, a imagem precisa carregar também em modo de escrita (rw, read and write) e o caminho do arquivo
     de inicialização precisa ser alterado para que seja possível acessar as linhas de comando através do shell, como se já
     estivéssemos logados. Aqui pode ser indicado qualquer shell que já venha compilado na imagem. Para informar o novo path
-    de boot, uso o comando init=/bin/bash logo após o parâmetro quiet.
+    de boot, insiro a linha init=/bin/bash logo após o parâmetro quiet. Quando já estiver na linha de comando e quiser reiniciar
+    a máquina eu preciso executar o comando init que está localizado na pasta /sbin/init: exec /sbin/init 6.
      
     A partir desse momento, posso me certificar de que realmente estou no console como usuário root com o comando "whoami",
     além de conferir os comandos que estão disponíveis no shell informado com a linha "man builtins", e seguir com as
