@@ -111,9 +111,7 @@ de par de chaves.
 ### 3.2 Criação de chaves
 
 Crie uma chave SSH do tipo ECDSA (qualquer tamanho) para o usuário `vagrant`. Em seguida, use essa mesma chave
-para acessar a VM.
-
-    
+para acessar a VM.    
 
     Quando o cliente SSH inicia a autenticação de cliente (enviando uma chave pública e uma assinatura para o servidor SSH),
     o servidor SSH deve ser capaz de verificar se ele foi configurado com a mesma chave pública recebida do cliente.
@@ -158,7 +156,7 @@ para acessar a VM.
     9 - ls -l
     10 - chmod 600 authorized_keys
     11 - ls -l
-    12 - rm vagrant.id_dsa.pub    
+    12 - rm vagrant.id_ecdsa.pub    
 
 ### 3.3 Análise de logs e configurações ssh
 
