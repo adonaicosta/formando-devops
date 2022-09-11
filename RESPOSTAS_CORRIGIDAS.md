@@ -112,6 +112,7 @@ para acessar a VM.
     ou até mesmo em servidores diferentes, desde que você utilize sua chave privada para entrar nestes servidores
     (a qual por padrão fica salva em seu usuário no Linux).
     
+    
     Tipos de Algorítmos
     
     rsa - um algoritmo antigo baseado na dificuldade de fatorar números grandes. Um tamanho de chave de pelo menos
@@ -128,7 +129,8 @@ para acessar a VM.
     (mesmo que elas também devam ser seguras). A maioria dos clientes SSH agora oferece suporte a esse algoritmo.
 
     ed25519 - este é um novo algoritmo adicionado no OpenSSH. O suporte para ele em clientes ainda não é universal.
-    Assim, seu uso em aplicações de uso geral pode ainda não ser aconselhável.    
+    Assim, seu uso em aplicações de uso geral pode ainda não ser aconselhável.
+    
     
     Como afirmado durante a correção das atividades, um cuidado que precisa ser tomado é sobre o uso de diversas
     chaves no mesmo diretório: se no momento da criação da chave não for indicada a saída apropriada uma chave
@@ -139,7 +141,18 @@ para acessar a VM.
     
     Obs: na flag -f também é possível indicar o caminho absoluto da nova chave junto com o nome:
          
-    -> ssh-keygen -f /diretorio/nome_da_chave
+    -> ssh-keygen -f /diretorio/nome_da_chave    
+    
+    Utilizando o Linux (no seu computador local, e não em seu servidor), você pode copiar a chave para o servidor utilizando 
+    o comando abaixo:
+    
+    -> ssh-copy-id vagrant@ip-do-servidor
+    
+    Lembre-se de alterar o usuário e o servidor para qual a chave será copiada. Após realizado este procedimento, sua chave
+    já estará instalada e você poderá logar no usuário e hosts especificado apenas usando o comandoÇ
+
+    ssh vagrant@ip-do-servidor
+    
     
     Servidor OpenSSH
     
@@ -198,7 +211,8 @@ para acessar a VM.
     9 - ls -l
     10 - chmod 600 authorized_keys
     11 - ls -l
-    12 - rm vagrant.id_ecdsa.pub    
+    12 - rm vagrant.id_ecdsa.pub 
+    
 
 ### 3.3 Análise de logs e configurações ssh
 
