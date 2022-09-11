@@ -135,7 +135,11 @@ para acessar a VM.
     de mesmo nome pode ser sobrescrita. Normalmente, a ferramenta cria um nome genérico para o arquivo no qual
     a chave é armazenada. No entanto, ele também pode ser especificado na linha de comando usando a opção -f (filename).
     
-    -> ssh-keygen -f [nome_da_chave] -t ecdsa -b 521
+    -> ssh-keygen -f nome_da_chave -t ecdsa -b 521
+    
+    Obs: na flag -f também é possível indicar o caminho absoluto da nova chave junto com o nome:
+         
+    -> ssh-keygen -f /diretorio/nome_da_chave
     
     Servidor OpenSSH
     
