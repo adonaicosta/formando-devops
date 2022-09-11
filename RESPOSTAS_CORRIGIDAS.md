@@ -29,11 +29,11 @@ Dica: lembre-se que você possui acesso "físico" ao host.
      
     A partir desse momento, posso me certificar de que realmente estou no console como usuário root com o comando "whoami",
     além de conferir os comandos que estão disponíveis no shell informado com a linha "man builtins", e seguir com as
-    modificações. Não é possível usar o comando visudo nesse modo, mas de maneira geral seu uso é recomendado para editar 
-    o arquivo /etc/sudoers, pois ele verifica se há erros de sintaxe ao salvá-lo. O arquivo não será salvo se houver erros.
-    Se você abrir o arquivo com um editor de texto diferente, um erro de sintaxe pode resultar na perda do acesso ao sudo.
-    Outro detalhe importante é que o comando visudo não pode permitir a edição do arquivo /etc/sudoers simultaneamente, 
-    apenas travando o arquivo e se alguém tentar acessar o mesmo, receberá uma mensagem para tentar mais tarde.
+    modificações. De maneira geral é recomendado editar o arquivo /etc/sudoers utilizando o visudo, pois ele verifica se
+    há erros de sintaxe ao salvá-lo. O arquivo não será salvo se houver erros. Se você abrir o arquivo com um editor de
+    texto diferente, um erro de sintaxe pode resultar na perda do acesso ao sudo. Outro detalhe importante é que o comando
+    visudo não pode permitir a edição do arquivo /etc/sudoers simultaneamente, travando o arquivo e se alguém tentar acessar
+    o mesmo, além de receber uma mensagem para tentar mais tarde.
     
     Regras do sudoers:    
     -> username    hosts=(users:groups)    commands   
@@ -59,12 +59,12 @@ Crie um usuário com as seguintes características:
 - grupos: `getup` (principal, GID=2222) e `bin`
 - permissão `sudo` para todos os comandos, sem solicitação de senha
 
-        Apesar de não ter sido especificado a função desse usuário no sistema, um set mínimo de configurações deve ser aplicado, tendo em
-        vista tanto o princípio de privilégios mínimos quanto a boas práticas de criação de usuários. Sendo assim, esse usuário deve ser
-        criado sem um diretório, uma vez que pode se tratar apenas de uma conta de gerenciamento.
-        Ainda no bash que foi iniciado pelo grub, alguns comandos precisam ser indicados com o path inteiro para que possam ser executados,
-        e para saber o caminho de um determinado comando a sintaxe é "whereis comando". Além disso, algumas flags precisam acompanhar esse
-        comando:
+        Apesar de não ter sido especificado a função desse usuário no sistema, um set mínimo de configurações deve ser aplicado,
+        tendo em vista tanto o princípio de privilégios mínimos quanto a boas práticas de criação de usuários. Sendo assim,
+        esse usuário deve ser criado sem um diretório próprio, uma vez que pode se tratar apenas de uma conta de gerenciamento.
+        Ainda no bash que foi iniciado pelo grub, alguns comandos precisam ser indicados com o path inteiro para que possam ser
+        executados, e para saber o caminho de um determinado comando a sintaxe é "whereis comando". Além disso, algumas flags
+        precisam acompanhar esse comando:
         
         -> /usr/sbin/useradd -M -U -G bin getup && /usr/sbin/groupmod -g 2222 getup
 
