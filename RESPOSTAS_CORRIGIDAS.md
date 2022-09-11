@@ -94,7 +94,6 @@ de par de chaves.
     
     PasswordAuthentication no
 
-
 ### 3.2 Criação de chaves
 
 Crie uma chave SSH do tipo ECDSA (qualquer tamanho) para o usuário `vagrant`. Em seguida, use essa mesma chave
@@ -160,6 +159,12 @@ Dica: o arquivo pode ter sido criado em um SO que trata o fim de linha de forma 
     Para decodificar um arquivo de texto codificado, teremos que usar a opção –decode ou -d.
     
     base64 -d id_rsa-desafio-linux-devel.gz.b64 > id_rsa-desafio-linux-devel.gz
+    
+    O comando gzip pode ser utilizado como uma ferramenta de compressão de arquivos no Unix.
+    Seu uso é simples, e a flag -d indica que queremos a descompactação:
+    
+    gzip -d id_rsa-desafio-linux-devel.gz > id_rsa-desafio-linux-devel
+    
     
 ## 4. Systemd
 
