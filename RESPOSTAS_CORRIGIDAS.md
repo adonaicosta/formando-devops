@@ -78,7 +78,7 @@ Crie um usuário com as seguintes características:
         -G adiciona o usuário a um grupo extra, no caso o grupo bin
 
         group
-        -g alera o gid do grupo especificado
+        -g altera o gid do grupo especificado
 
         Além disso, o arquivo sudoers também deve ser modificado para não pedir senha para esse usuário ao usar o comando sudo:    
         ->  getup    ALL=(ALL:ALL)    NOPASSWD:ALL
