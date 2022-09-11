@@ -61,8 +61,8 @@ Crie um usuário com as seguintes características:
 
         Apesar de não ter sido especificado a função desse usuário no sistema, um set mínimo de configurações deve ser aplicado, tendo em
         vista tanto o princípio de privilégios mínimos quanto a boas práticas de criação de usuários. Sendo assim, esse usuário deve ser
-        criado sem um diretório no /home, uma vez que pode se tratar apenas de uma conta de gerenciamento.
-        Ainda no bash que foi iniciado pelo grub, alguns comandos precisam ser indicados com o path inteiro para que possam ser executado,
+        criado sem um diretório, uma vez que pode se tratar apenas de uma conta de gerenciamento.
+        Ainda no bash que foi iniciado pelo grub, alguns comandos precisam ser indicados com o path inteiro para que possam ser executados,
         e para saber o caminho de um determinado comando a sintaxe é "whereis comando". Além disso, algumas flags precisam acompanhar esse
         comando:
         
@@ -72,7 +72,7 @@ Crie um usuário com as seguintes características:
 
         useradd    
         -M garante que um diretório NÃO seja criado para o novo usuário
-        -U cria o grupo inicial do usuário com o mesmo nome (importante caso a varíavel de ambiente não esteja configurada para fazer isso)
+        -U cria o grupo inicial do usuário com o mesmo nome (importante caso a varíável de ambiente não esteja configurada para fazer isso)
         -G adiciona o usuário a um grupo extra, no caso o grupo bin
 
         group
