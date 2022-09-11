@@ -72,9 +72,9 @@ Dica: lembre-se que você possui acesso "físico" ao host.
 
 Crie um usuário com as seguintes características:
 
-    - username: `getup` (UID=1111)
-    - grupos: `getup` (principal, GID=2222) e `bin`
-    - permissão `sudo` para todos os comandos, sem solicitação de senha
+- username: `getup` (UID=1111)
+- grupos: `getup` (principal, GID=2222) e `bin`
+- permissão `sudo` para todos os comandos, sem solicitação de senha
 
         Apesar de não ter sido especificado a função desse usuário no sistema, um set mínimo de configurações deve ser aplicado, tendo em
         vista tanto o princípio de privilégios mínimos quanto a boas práticas de criação de usuários. Sendo assim, esse usuário deve ser
