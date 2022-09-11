@@ -90,6 +90,10 @@ O servidor SSH está configurado para aceitar autenticação por senha. No entan
 pois apresenta alto nivel de fragilidade. Voce deve desativar autenticação por senhas e permitir apenas o uso
 de par de chaves.
 
+    Essa tarefa exige apenas a alteração do arquivo /etc/ssh/sshd_config e a reinicialização do daemon do ssh
+    
+    PasswordAuthentication no
+
 
 ### 3.2 Criação de chaves
 
