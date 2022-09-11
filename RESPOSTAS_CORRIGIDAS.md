@@ -108,17 +108,11 @@ para acessar a VM.
 
     Esta chave pode ser gerada tanto no Windows quanto no Linux, e são um "par", sendo a chave pública
     (enviada para os servidores que você possui permissão para acessar) e a chave privada (somente você deve
-    possuir e pode ser criptografada com uma senha).
-
-    Você pode adicionar a sua chave pública a mais de um usuário ou até mesmo em servidores diferentes, desde que
-    você utilize sua chave privada para entrar nestes servidores (a qual por padrão fica salva em seu usuário no Linux).
+    possuir e pode ser criptografada com uma senha). Você pode adicionar a sua chave pública a mais de um usuário
+    ou até mesmo em servidores diferentes, desde que você utilize sua chave privada para entrar nestes servidores
+    (a qual por padrão fica salva em seu usuário no Linux).
     
-    Como afirmando durante a correção das atividades, um cuidado que precisa ser tomado é sobre o uso de diversas
-    chaves no mesmo diretório: se no momento da criação da chave não for indicada a saída apropriada uma chave
-    de mesmo nome pode ser sobrescrita.
-    
-    Criação de uma chave ECDSA no linux (observação: chaves de maior comprimento costumam exigir maior processamento
-    computacional, e portanto em ambientes de nuvem e virtualizado isso pode ser uma preocupação):
+    Tipos De Chaves:
     
     rsa - um algoritmo antigo baseado na dificuldade de fatorar números grandes. Um tamanho de chave de pelo menos
     2048 bits é recomendado para RSA; 4096 bits é melhor. A RSA está ficando velha e avanços significativos estão sendo
@@ -134,12 +128,16 @@ para acessar a VM.
     (mesmo que elas também devam ser seguras). A maioria dos clientes SSH agora oferece suporte a esse algoritmo.
 
     ed25519 - este é um novo algoritmo adicionado no OpenSSH. O suporte para ele em clientes ainda não é universal.
-    Assim, seu uso em aplicações de uso geral pode ainda não ser aconselhável.
+    Assim, seu uso em aplicações de uso geral pode ainda não ser aconselhável.    
     
-    Normalmente, a ferramenta cria o nome do arquivo no qual armazenar a chave. No entanto, ele também pode ser especificado
-    na linha de comando usando a opção -f (filename).
-
+    Como afirmado durante a correção das atividades, um cuidado que precisa ser tomado é sobre o uso de diversas
+    chaves no mesmo diretório: se no momento da criação da chave não for indicada a saída apropriada uma chave
+    de mesmo nome pode ser sobrescrita. Normalmente, a ferramenta cria um nome genérico para o arquivo no qual
+    a chave é armazenada. No entanto, ele também pode ser especificado na linha de comando usando a opção -f (filename).
+    
     -> ssh-keygen -f ~/ -t ecdsa -b 521
+    
+    Servidor OpenSSH
     
     Para rodar um servidor OpenSSH, você deve primeiramente certificar-se de ter os pacotes RPM apropriados instalados.
     O pacote openssh-server é necessário e depende do pacote openssh. O daemon OpenSSH usa o arquivo de configuração
