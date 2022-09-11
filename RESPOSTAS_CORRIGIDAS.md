@@ -163,14 +163,23 @@ Dica: o arquivo pode ter sido criado em um SO que trata o fim de linha de forma 
     O comando gzip pode ser utilizado como uma ferramenta de compressão de arquivos no Unix.
     Seu uso é simples, e a flag -d indica que queremos a descompactação:
     
-    -> gzip -d id_rsa-desafio-linux-devel.gz > id_rsa-desafio-linux-devel
+    -> gzip -d id_rsa-desafio-linux-devel.gz > id_rsa-desafio-linux-devel    
+     
+    Nos arquivos em formato DOS, o fim da linha é representado por dois caracteres, o Carriage Return (CR)
+    ou \r seguido por Line Feed (LF) ou \n. Os arquivos Unix, por outro lado, usam apenas Line Feed \n.
     
-    O final de linha padrão DOS / Windows é diferente do padrão Unix. O comando tr é um comando básico no Linux/Unix,
-    porém não é muito conhecido ou utilizado com frequência. Sua função básica é substituir (traduzir) o conteúdo de
-    uma string (texto) recebido via entrada padrão (STDIN) de um formato para outro, ou ainda excluir caracteres.
-    E para converter com quebra de linha no Linux de um arquivo do padrão DOS para o padrão utilizado pelo Linux é simples:
+    O comando tr é um comando básico no Linux/Unix, porém não é muito conhecido ou utilizado com frequência.
+    Sua função básica é substituir (traduzir) o conteúdo de uma string (texto) recebido via entrada padrão
+    (STDIN) de um formato para outro, ou ainda excluir caracteres. E para converter com quebra de linha no
+    Linux de um arquivo do padrão DOS para o padrão utilizado pelo Linux é simples:
     
-    -> tr -d '\r' id_rsa-desafio-linux-devel > id_rsa-desafio-linux-devel
+    -> tr -d '\r' id_rsa-desafio-linux-devel > id_rsa-desafio-linux-devel   
+
+    dos2unix é uma ferramenta para converter quebras de linha em um arquivo de texto do formato DOS para
+    o formato UNIX e vice-versa.
+
+    Comando dos2unix : converte um arquivo de texto DOS para o formato UNIX
+    Comando unix2dos : converte um arquivo de texto Unix para o formato DOS
     
     
 ## 4. Systemd
