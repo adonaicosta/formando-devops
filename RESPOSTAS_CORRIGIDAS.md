@@ -39,7 +39,7 @@ Dica: lembre-se que você possui acesso "físico" ao host.
     -> username    hosts=(users:groups)    commands   
 
     Se você deseja usar o comando sem senha, use o parâmetro PASSWD:   
-    -> username    ALL(ALL:ALL)    NOPASSWD:ALL
+    -> username    ALL=(ALL:ALL)    NOPASSWD:ALL
 
     No exemplo abaixo, o usuário apenas inicia, interrompe e reinicie o serviço "httpd":
     -> username    ALL=(root)      /usr/bin/systemctl, /usr/sbin/httpd start stop restart
@@ -96,7 +96,7 @@ Crie um usuário com as seguintes características:
         -g alera o gid do grupo especificado
 
         Além disso, o arquivo sudoers também deve ser modificado para não pedir senha para esse usuário ao usar o comando sudo:    
-        ->  getup    ALL(ALL:ALL)    NOPASSWD:ALL
+        ->  getup    ALL=(ALL:ALL)    NOPASSWD:ALL
     
 
 ## 3. SSH
