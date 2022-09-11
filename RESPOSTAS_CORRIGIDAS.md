@@ -36,17 +36,17 @@ Dica: lembre-se que você possui acesso "físico" ao host.
     apenas travando o arquivo e se alguém tentar acessar o mesmo, receberá uma mensagem para tentar mais tarde.
     
     Regras do sudoers:
-    username    hosts=(users:groups)    commands   
+    -> username    hosts=(users:groups)    commands   
 
     Se você deseja usar o comando sem senha, use o parâmetro PASSWD:   
-    username    ALL(ALL:ALL)    NOPASSWD:ALL
+    -> username    ALL(ALL:ALL)    NOPASSWD:ALL
 
     No exemplo abaixo, o usuário apenas inicia, interrompe e reinicie o serviço "httpd":
-    username    ALL=(root)      /usr/bin/systemctl, /usr/sbin/httpd start stop restart
+    -> username    ALL=(root)      /usr/bin/systemctl, /usr/sbin/httpd start stop restart
     
     Portanto para dar ao usuário vagrant a permissão de executar comandos root usando sudo, a seguinte linha deve ser
     escrita no sudoers:
-    vagrant     ALL=(ALL:ALL)    ALL    
+    -> vagrant     ALL=(ALL:ALL)    ALL    
     
     Opções do Visudo:
     
