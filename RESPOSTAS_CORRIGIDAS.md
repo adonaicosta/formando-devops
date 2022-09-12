@@ -267,6 +267,22 @@ Dica: o arquivo pode ter sido criado em um SO que trata o fim de linha de forma 
     do ssh para não solicitar esse tipo de compatibilidade alterando o seu arquivo de configuração e comentando as linhas
     correspondentes a GSSAPI.
     
+    Apesar do desafio apresentar uma dica sobre a chave ter sido gerada em um sistema operacional e a tentativa de login ser
+    em outro S.O., achei interessante simular como seria resolver esse desafio sem essa dica, e para isso usei a flag -vvv
+    no lado do cliente para examinar mais detalhadamente o erro de autenticação.
+    A linha mais relevante foi a que apontava um erro na biblioteca de criptografia do OpenSSH, que entre muitas funções
+    possui opções de compatibilidade (incluindo compatibilidade para sistemas legados). Quando um cliente SSH se conecta
+    a um servidor, cada lado oferece uma lista de parâmetros de conexão para o outro:
+
+    -> KexAlgorithms: os métodos de troca de chaves que são usados para gerar uma conexão
+    -> HostkeyAlgorithms: os algoritmos de chave pública aceitos por um servidor SSH para se autenticar em um cliente SSH
+    -> Cifras: as cifras para criptografar a conexão
+    -> MACs: os códigos de autenticação de mensagem usados para detectar a modificação do tráfego
+    
+    Para uma conexão bem-sucedida, deve haver pelo menos uma opção de suporte mútuo para cada parâmetro. Ou seja, como
+    provavelmente o erro está na incompatibilidade da Cifra, as buscas por uma possível solução já poderiam ser reduzidas
+    apenas para problemas comuns relacionados a isso.
+    
     
 ## 4. Systemd
 
