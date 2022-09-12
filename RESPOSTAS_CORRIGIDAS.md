@@ -254,7 +254,7 @@ Dica: o arquivo pode ter sido criado em um SO que trata o fim de linha de forma 
     Comando unix2dos : converte um arquivo de texto Unix para o formato DOS
     
     
-    Um dos erros que identificados no log de autenticação por parte do cliente foi referente a GSSAPI, e vale a pena
+    Um dos erros identificados no log de autenticação por parte do cliente foi referente a GSSAPI, e vale a pena
     comentar sobre isso:
     
     A GSSAPI é uma interface que permite desenvolvedores escreverem aplicações que aproveitam mecanismos de segurança tais
