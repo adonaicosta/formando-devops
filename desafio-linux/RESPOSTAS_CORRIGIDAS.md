@@ -231,7 +231,7 @@ de par de chaves.
     Banner /etc/issue.net : Mostra uma mensagem antes do nome de login.
 
    
-   AcceptEnv LANG LC_* : Permitir que o cliente passe variáveis de ambiente de local
+    AcceptEnv LANG LC_* : Permitir que o cliente passe variáveis de ambiente de local
     
     
     Subsystem sftp /usr/lib/openssh/sftp-server -> Ativa o subsistema de ftp seguro.
