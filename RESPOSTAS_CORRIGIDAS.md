@@ -301,7 +301,7 @@ Dica: para iniciar o serviço utilize o comando `systemctl start nginx`.
     o primeiro lugar que precisa ser analisado é esse arquivo. Um erro evidente é a flag -BROKEN que foi colocada intencionalmente
     para impedir a execução correta do programa, no entanto uma atitude mais adequada seria consultar um modelo do arquivo de configuração
     do nginx para descartar qualquer outra possibilidade de alteração, uma vez que uma flag apropriada, apesar de pertencer a biblioteca
-    do arquivo, pode gerar um comportamento inesperado do serviço. Segue abaixo, portanto, um modelo retirado da própria página do Nginx:
+    do arquivo, pode gerar um comportamento inesperado do serviço. Segue abaixo, portanto, um modelo retirado da própria página do nginx:
     
         [Unit]
         Description=The NGINX HTTP and reverse proxy server
@@ -321,13 +321,14 @@ Dica: para iniciar o serviço utilize o comando `systemctl start nginx`.
         WantedBy=multi-user.target
         
     Logo após a remoção do parâmetro incorreto, é preciso recarregar o daemon do systemd para que ele reconheça
-    a nova configuração da biblioteca do Nginx com o comando systemctl daemon-reload. No entanto, o serviço ainda apresentava
-    erros.
-    A flag -t do Nginx indica que num primeiro momento é feito um teste de sintaxe e uma tentativa de carregar as informações
-    presentes no arquivo arquivo de configuração do Nginx, que é o /etc/nginx/nginx.conf. Como a saída de erro já indicava
-    um erro crítico nesse arquivo [emerg] a busca pelo motivo da falha da inicializacao do servido deveria continuar por ali. 
-    Como o arquivo de configuracao e menos critico que o arquivo da biblioteca do nginx, nesse caso posso simplesmente corrigir
-    os erros de sintaxe presente no arquivo e testar novamente o servico.        
+    a nova configuração da biblioteca do Nginx com o comando systemctl daemon-reload. No entanto, o serviço ainda
+    apresentava erros.
+    A flag -t do nginx indica que num primeiro momento é feito um teste de sintaxe e uma tentativa de carregar as
+    informações presentes no arquivo arquivo de configuração do Nginx, que é o /etc/nginx/nginx.conf. Como a saída
+    de erro já indicava um erro crítico nesse arquivo [emerg] a busca pelo motivo da falha da inicializacao do serviço
+    deveria continuar por ali. O arquivo de configuracao do nginx é menos critico que o arquivo da biblioteca do nginx
+    para se realizar alterações, e nesse caso posso simplesmente corrigir os erros de sintaxe presente no arquivo e testar
+    novamente o servico.        
         
   
 ## 5. SSL
