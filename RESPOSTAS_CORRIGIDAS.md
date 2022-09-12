@@ -155,7 +155,7 @@ para acessar a VM.
     ssh vagrant@ip-do-servidor
     
     
-    Servidor OpenSSH (caso não estivesse configurado previamente)
+    Servidor OpenSSH (caso não estivesse previamente configurado)
     
     Para rodar um servidor OpenSSH, você deve primeiramente certificar-se de ter os pacotes RPM apropriados instalados.
     O pacote openssh-server é necessário e depende do pacote openssh. O daemon OpenSSH usa o arquivo de configuração
