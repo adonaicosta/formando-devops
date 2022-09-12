@@ -322,7 +322,7 @@ Dica: para iniciar o serviço utilize o comando `systemctl start nginx`.
         WantedBy=multi-user.target
         
     Logo após a remoção do parâmetro incorreto, é preciso recarregar o daemon do systemd para que ele reconheça
-    a nova configuração da biblioteca do Nginx com o comando systemctl daemon-reload.
+    a nova configuração da biblioteca do nginx com o comando systemctl daemon-reload.
     
     O systemd é um sistema de inicialização (init system) composto por um conjunto de programas executado em segundo
     plano (ou seja, um daemon). Atualmente, a maioria das distribuições Linux utilizam o systemd para execução do boot.
