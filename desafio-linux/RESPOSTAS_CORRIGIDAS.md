@@ -94,7 +94,7 @@ pois apresenta alto nivel de fragilidade. Voce deve desativar autenticação por
 de par de chaves.
 
     O sshd_config é o arquivo de configuração do serviço ssh para o módulo servidor. Abaixo estao indicadas
-    algumas das opções de configuração do arquivo: 
+    algumas das opções de configuração desse arquivo: 
      
  
     Port 22 : Porta padrão usada pelo servidor sshd
