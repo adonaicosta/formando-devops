@@ -150,7 +150,7 @@ para acessar a VM.
     -> ssh-copy-id vagrant@ip-do-servidor
     
     Lembre-se de alterar o usuário e o servidor para qual a chave será copiada. Após realizado este procedimento, sua chave
-    já estará instalada e você poderá logar no usuário e hosts especificado apenas usando o comandoÇ
+    já estará instalada e você poderá logar no usuário e hosts especificado apenas usando o comando:
 
     ssh vagrant@ip-do-servidor
     
