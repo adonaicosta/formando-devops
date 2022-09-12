@@ -93,9 +93,128 @@ O servidor SSH está configurado para aceitar autenticação por senha. No entan
 pois apresenta alto nivel de fragilidade. Voce deve desativar autenticação por senhas e permitir apenas o uso
 de par de chaves.
 
+    O sshd_config é o arquivo de configuração do serviço ssh para o módulo servidor. Abaixo estao indicadas
+    algumas das opções de configuração do arquivo: 
+     
+ 
+    Port 22 -  Porta padrão usada pelo servidor sshd
+    
+    ListenAddress 192.168.0.x ->  Especifica o endereço IP das interfaces de rede que o servidor sshd
+                                  servirá requisições
+
+    Protocol 2 ->  Protocolos aceitos pelo servidor, primeiro será verificado se o cliente é
+                   compatível com a versão 2 e depois a versão 1. Caso seja especificado somente
+                   a versão 2 e o cliente seja versão 1, a conexão será descartada.
+                   Quando não é especificada, o protocolo ssh 1 é usado como padrão.    
+
+    HostKey /etc/ssh/ssh_host_rsa_key -> Especifica os arquivos que contém as chaves privadas do sshd.               
+                                         O ssh faz a criptograifa dos dados usando chaves assimétricas   
+                                         privadas e públicas.                                       
+    
+    UsePrivilegeSeparation yes -> Está opção especifica se será criado um processo filho sem privilégios.   
+                                  Após a autenticação bem-sucedida, outro processo será criado que tem    
+                                  o privilégio de o usuário autenticado. O objetivo da separação de      
+                                  privilégio é para evitar a escalonamento de privilégios. A opcao 
+                                  padrão é "Sim". 
+                     
+    KeyRegenerationInterval 1200 -> Tempo para geração de nova chave do servidor (segundos). O padrão é  
+                                    3600 segundos (1 hora).                                                  
+                                    O propósito de regeneração de chaves é para evitar descriptografar           
+                                    trafégo capturado em sessões abertas para posteriormente tentar           
+                                    invadir a máquina e roubar as chaves.                               
+                                    A chave nunca é armazenada em qualquer lugar. Se o valor for 0           
+                                    a chave nunca será regenerada.                                 
+  
+    ServerKeyBits 1024 -> Tamanho da chave após ser gerada. 1024 bits é o padrão.   
+
+    SyslogFacility AUTH -> Indica Facilidade e nível logs do sshd que aparecerão no syslogd   
+    LogLevel INFO       -> ou no rsyslog, e podem ser alterados conforme a necessídade.  
+    
+    LoginGraceTime 120 -> Tempo máximo para fazer login no sistema antes da conexão ser fechada   
+                          informado em segundos. Se o valor for 0 não tem limite.           
+                          O padrão é 120 segundos.          
+
+    PermitRootLogin no -> Permite (yes) ou nega (no) que o usuário root acesse    
+                          remotamente o servidor. por segurança deixe desabilitada.  
+
+    PermitTunnel yes -> Especifica se o encaminhamento pelos dispositivos tun/tap   
+                        é permitido, criando um rede ponto-a-ponto usando ssh.           
+                        Ou seja, permite ou não a criação de túneis cifrados com sshd. 
+
+    StrictModes yes -> Checa por permissões de dono dos arquivos e diretório de usuário antes de   
+                       fazer o login. É muito recomendável para evitar riscos de segurança              
+                       com arquivos lidos por todos os usuários.                        
+  
+    AllowUsers Nome_do_usuario ->  Usuários que o ssh permite acessar remotamente o servidor . 
+
+    DenyUsers root -> Está opção especifica quais usuários não terão permissão de acesso ao servidor
+                      sshd. a sintaxe é a mesma de AllowUsers, pode especificar vários usuários   
+                      separados por espaço.  
+                      
+    AllowGroups -> Especifica uma lista de groupos que terão acesso permitido ao sshd.      
+                                                        
+    DenyGroups ->  Especifica uma lista de grupos que terão seu acesso negado ao sshd.           
+                  
+    RSAAuthentication yes ->  Especifica se a autenticação via RSA é permitida (só usado na versão 1 do   
+                              protocolo ssh). Por padrão "yes".                                  
+
+    PubkeyAuthentication yes -> Especifica se a autenticação usando chave pública é permitida.  
+                                O padrão é "Sim". Note que esta opção se aplica ao protocolo   
+                                versão 2 apenas.    
+
+
+    AuthorizedKeysFile   %h/.ssh/authorized_keys -> Especifica o arquivo que contém as chaves públicas que podem ser usados
+                                                    para autenticação de usuários. "%h" especifica o diretório home do          
+                                                    do usuário que está usando as chaves públicas e privadas.  
+                                                    
+    IgnoreRhosts yes -> Ignora os arquivos ~/.rhosts e ~/.shosts ou não.                                        
+   
+    PermitEmptyPasswords no ->  Se a opção PasswordAuthentication for usada, permite (yes) ou não (no) login   
+                                sem senha. O padrão é "no". Não é recomendado habilitar (yes) essa opção   
+
+    ChallengeResponseAuthentication no ->  Está opção permiti (yes) ou nega (no) se a autenticação desafio-resposta será aceita.   
+                                           via PAM Por exemplo. o Padrão é (yes).                               
+    
+    PasswordAuthentication yes -> Se a PasswordAuthentication for usada, permite (yes) ou não (no) login 
+                                  usando senha. O padrão é "yes".                          
+  
+    TCPKeepAlive yes -> Permite (yes) ou não (no) o envio de pacotes keepalive (para verificar se o           
+                        cliente responde. Isto é bom para fechar conexões que não respondem mas   
+                        também podem fechar conexões caso não existam rotas para o cliente      
+                        naquele momento. Colocando esta opção como "no", por outro lado, pode deixar
+                        usuários que não tiveram a oportunidade de efetuar o logout do servidor de dados
+                        como "permanentemente conectados" no sistema.                     
+
+    UseLogin no ->  Usa (yes) ou não usa (no) o programa login para efetuar o login do cliente 
+                    no servidor ssh. o padrão é "não".                                                   
+
+    MaxAuthTries 2 ->   Especifica o número máximo de tentativas de autenticação permitidas   
+                        por conexão. Uma vez que o número de falhas chega a metade desse   
+                        valor, falhas adicionais são registrados. O padrão é 6.              
+
+    MaxSessions 1 -> Especifica o número máximo de sessões abertas permitidas. O padrão é 10.                         
+   
+    MaxStartups 5:40:15 ->  Especifica o número máximo de conexões de autenticação simultâneas feitas   
+                            pelo daemon sshd. O valor padrão é 10. Valores aleatórios podem ser      
+                            especificados usando os campos "inicio:taxa:máximo". Por exemplo,             
+                            5:40:15 rejeita até 40% das tentativas de autenticação que excedam o      
+                            limite de 5 até atingir o limite máximo de 15 conexões, quando                      
+                            nenhuma nova autenticação é permitida.                                       
+
+    Banner /etc/issue.net -> Mostra uma mensagem antes do nome de login.
+
+    AcceptEnv LANG LC_* -> Permitir que o cliente passe variáveis de ambiente de local
+    
+    Subsystem sftp /usr/lib/openssh/sftp-server -> Ativa o subsistema de ftp seguro.
+
+    UsePAM no ->  Permite a autenticação usando o PAM (yes) ou não (no) 
+    o padrão é "não".  
+    
+
     Essa tarefa exige apenas a alteração do arquivo /etc/ssh/sshd_config e a reinicialização do daemon do ssh
     
     PasswordAuthentication no
+    
 
 ### 3.2 Criação de chaves
 
