@@ -162,7 +162,6 @@ de par de chaves.
                                 O padrão é "Sim". Note que esta opção se aplica ao protocolo   
                                 versão 2 apenas.    
 
-
     AuthorizedKeysFile   %h/.ssh/authorized_keys -> Especifica o arquivo que contém as chaves públicas que podem ser usados
                                                     para autenticação de usuários. "%h" especifica o diretório home do          
                                                     do usuário que está usando as chaves públicas e privadas.  
