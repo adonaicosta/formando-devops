@@ -172,8 +172,8 @@ de par de chaves.
     PermitEmptyPasswords no ->  Se a opção PasswordAuthentication for usada, permite (yes) ou não (no) login   
                                 sem senha. O padrão é "no". Não é recomendado habilitar (yes) essa opção   
 
-    ChallengeResponseAuthentication no ->  Está opção permiti (yes) ou nega (no) se a autenticação desafio-resposta será aceita.   
-                                           via PAM Por exemplo. o Padrão é (yes).                               
+    ChallengeResponseAuthentication no ->  Está opção permite (yes) ou nega (no) se a autenticação desafio-resposta será aceita   
+                                           via PAM, por exemplo. O padrão é (yes).                               
     
     PasswordAuthentication yes -> Se a PasswordAuthentication for usada, permite (yes) ou não (no) login 
                                   usando senha. O padrão é "yes".                          
