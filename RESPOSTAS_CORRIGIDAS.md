@@ -296,6 +296,40 @@ curl http://127.0.0.1
 
 Dica: para iniciar o serviço utilize o comando `systemctl start nginx`.
 
+    Após emitir o comando systemctl start nginx, alguns erros são apresentados, e como o desafio indicava algo relacionado com o o Systemd
+    (além de que o primeiro log de erro aponta uma falha no carregamento do arquivo /usr/lib/systemd/system/nginx.service), o primeiro
+    lugar que precisa ser analisado é esse arquivo. 
+    Um erro evidente é a flag -BROKEN que foi colocada intencionalmente para impedir a execução correta do programa, no entanto uma
+    atitude mais adequada seria consultar um modelo do arquivo de configuração do nginx para descartar qualquer outra possibilidade
+    de alteração, uma vez que uma flag apropriada, apesar de pertencer a biblioteca do arquivo, pode gerar um comportamento inesperado
+    do serviço. Segue abaixo, portanto, um modelo retirado da própria página do Nginx:
+    
+        [Unit]
+        Description=The NGINX HTTP and reverse proxy server
+        After=syslog.target network-online.target remote-fs.target nss-lookup.target
+        Wants=network-online.target
+
+        [Service]
+        Type=forking
+        PIDFile=/run/nginx.pid
+        ExecStartPre=/usr/sbin/nginx -t
+        ExecStart=/usr/sbin/nginx
+        ExecReload=/usr/sbin/nginx -s reload
+        ExecStop=/bin/kill -s QUIT $MAINPID
+        PrivateTmp=true
+
+        [Install]
+        WantedBy=multi-user.target
+        
+        Logo após a remoção do parâmetro incorreto, é preciso recarregar o daemon do prório systemd para que ele reconheça
+        a nova configuração da biblioteca do Nginx com o comando systemctl daemon-reload. No entanto, o serviço ainda apresentava
+        erros.
+        A flag -t do Nginx indica que num primeiro momento é feito um teste de sintaxe e uma tentativa de carregar as informações
+        presentes no arquivo arquivo de configuração do Nginx, que é o /etc/nginx/nginx.conf. Como a saída de erro já indicava
+        um erro crítico nesse arquivo [emerg] a busca pelo motivo da falha da inicializacao do servido deveria continuar por ali.        
+        
+        
+  
 ## 5. SSL
 
 ### 5.1 Criação de certificados
