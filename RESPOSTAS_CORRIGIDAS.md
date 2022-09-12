@@ -155,7 +155,7 @@ para acessar a VM.
     ssh vagrant@ip-do-servidor
     
     
-    Servidor OpenSSH
+    Servidor OpenSSH (caso não estivesse configurado previamente)
     
     Para rodar um servidor OpenSSH, você deve primeiramente certificar-se de ter os pacotes RPM apropriados instalados.
     O pacote openssh-server é necessário e depende do pacote openssh. O daemon OpenSSH usa o arquivo de configuração
@@ -236,6 +236,7 @@ Dica: o arquivo pode ter sido criado em um SO que trata o fim de linha de forma 
     
     -> gzip -d id_rsa-desafio-linux-devel.gz > id_rsa-desafio-linux-devel    
      
+    
     Nos arquivos em formato DOS, o fim da linha é representado por dois caracteres, o Carriage Return (CR)
     ou \r seguido por Line Feed (LF) ou \n. Os arquivos Unix, por outro lado, usam apenas Line Feed \n.
     
@@ -251,6 +252,20 @@ Dica: o arquivo pode ter sido criado em um SO que trata o fim de linha de forma 
 
     Comando dos2unix : converte um arquivo de texto DOS para o formato UNIX
     Comando unix2dos : converte um arquivo de texto Unix para o formato DOS
+    
+    
+    Um dos erros que identificados no log de autenticação por parte do cliente foi referente a GSSAPI, e vale a pena
+    comentar sobre isso:
+    
+    A GSSAPI é uma interface que permite desenvolvedores escreverem aplicações que aproveitam mecanismos de segurança tais
+    como Kerberos, sem ter de programar explicitamente para qualquer mecanismo, ou seja, aplicações genéricas do ponto de
+    vista de segurança. Programas que usam GSSAPI são, deste modo, altamente portáteis, não somente de uma plataforma para
+    outra, mas de uma configuração de segurança a outra e de um protocolo de transporte a outro.
+    
+    Poderia se argumentar que o erro na autenticação da chave seria por causa de um formato não compatível com essa API de
+    autenticação, e caso não houvesse nenhuma política por parte da empresa nesse sentido seria possível dizer ao daemon
+    do ssh para não solicitar esse tipo de compatibilidade alterando o seu arquivo de configuração e comentando as linhas
+    correspondentes ao GSSAPI.
     
     
 ## 4. Systemd
