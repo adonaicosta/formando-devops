@@ -299,9 +299,10 @@ Dica: para iniciar o serviço utilize o comando `systemctl start nginx`.
     Após emitir o comando systemctl start nginx, alguns erros são apresentados, e como o desafio indicava algo relacionado
     com o o Systemd (o primeiro log de erro aponta uma falha no carregamento do arquivo /usr/lib/systemd/system/nginx.service),
     o primeiro lugar que precisa ser analisado é esse arquivo. Um erro evidente é a flag -BROKEN que foi colocada intencionalmente
-    para impedir a execução correta do programa, no entanto uma atitude mais adequada seria consultar um modelo do arquivo de configuração
-    do nginx para descartar qualquer outra possibilidade de alteração, uma vez que uma flag apropriada, apesar de pertencer a biblioteca
-    do arquivo, pode gerar um comportamento inesperado do serviço. Segue abaixo, portanto, um modelo retirado da própria página do nginx:
+    para impedir a execução correta do programa, no entanto uma atitude mais adequada seria consultar um modelo do arquivo de
+    configuração do nginx para descartar qualquer outra possibilidade de alteração, uma vez que uma flag apropriada, apesar de
+    pertencer a biblioteca do arquivo, pode gerar um comportamento inesperado do serviço. Segue abaixo, portanto, um modelo
+    retirado da própria página do nginx:
     
         [Unit]
         Description=The NGINX HTTP and reverse proxy server
