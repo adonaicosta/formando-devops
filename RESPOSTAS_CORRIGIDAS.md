@@ -97,7 +97,7 @@ de par de chaves.
     algumas das opções de configuração do arquivo: 
      
  
-    Port 22 -  Porta padrão usada pelo servidor sshd
+    Port 22 ->  Porta padrão usada pelo servidor sshd
     
     ListenAddress 192.168.0.x ->  Especifica o endereço IP das interfaces de rede que o servidor sshd
                                   servirá requisições
