@@ -321,13 +321,19 @@ Dica: para iniciar o serviço utilize o comando `systemctl start nginx`.
         WantedBy=multi-user.target
         
     Logo após a remoção do parâmetro incorreto, é preciso recarregar o daemon do systemd para que ele reconheça
-    a nova configuração da biblioteca do Nginx com o comando systemctl daemon-reload. No entanto, o serviço ainda
-    apresentava erros.
+    a nova configuração da biblioteca do Nginx com o comando systemctl daemon-reload.
+    
+    O systemd é um sistema de inicialização (init system) composto por um conjunto de programas executado em segundo
+    plano (ou seja, um daemon). Atualmente, a maioria das distribuições Linux utilizam o systemd para execução do boot.
+    Na prática, o systemd assume o controle assim que o kernel é ativado pelo gerenciador de bootloader (Grub, tipicamente).
+    A partir daí, são carregados todos os dispositivos (placa de rede, processador gráfico etc.) e processos que se iniciam
+    com o sistema — estes são identificados pelo PID (process identifier) e é o caso, por exemplo, do nginx.
+    
     A flag -t do nginx indica que num primeiro momento é feito um teste de sintaxe e uma tentativa de carregar as
-    informações presentes no arquivo arquivo de configuração do Nginx, que é o /etc/nginx/nginx.conf. Como a saída
-    de erro já indicava um erro crítico nesse arquivo [emerg] a busca pelo motivo da falha da inicializacao do serviço
-    deveria continuar por ali. O arquivo de configuracao do nginx é menos critico que o arquivo da biblioteca do nginx
-    para se realizar alterações, e nesse caso posso simplesmente corrigir os erros de sintaxe presente no arquivo e testar
+    informações presentes no arquivo arquivo de configuração, que é o /etc/nginx/nginx.conf. Como a saída
+    do log já indicava um erro crítico nesse arquivo [emerg] a busca pelo motivo da falha na inicializacao do serviço
+    deveria continuar por ali. O arquivo de configuracao do nginx é menos critico que o arquivo da biblioteca para se
+    realizar alterações, e nesse caso posso simplesmente corrigir os erros de sintaxe presentes no arquivo e testar
     novamente o servico.        
         
   
