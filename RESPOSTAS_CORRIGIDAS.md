@@ -265,7 +265,7 @@ Dica: o arquivo pode ter sido criado em um SO que trata o fim de linha de forma 
     Poderia se argumentar que o erro na autenticação da chave seria por causa de um formato não compatível com essa API de
     autenticação, e caso não houvesse nenhuma política por parte da empresa nesse sentido seria possível dizer ao daemon
     do ssh para não solicitar esse tipo de compatibilidade alterando o seu arquivo de configuração e comentando as linhas
-    correspondentes ao GSSAPI.
+    correspondentes a GSSAPI.
     
     
 ## 4. Systemd
