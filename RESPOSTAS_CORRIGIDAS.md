@@ -320,13 +320,14 @@ Dica: para iniciar o serviço utilize o comando `systemctl start nginx`.
         [Install]
         WantedBy=multi-user.target
         
-        Logo após a remoção do parâmetro incorreto, é preciso recarregar o daemon do systemd para que ele reconheça
-        a nova configuração da biblioteca do Nginx com o comando systemctl daemon-reload. No entanto, o serviço ainda apresentava
-        erros.
-        A flag -t do Nginx indica que num primeiro momento é feito um teste de sintaxe e uma tentativa de carregar as informações
-        presentes no arquivo arquivo de configuração do Nginx, que é o /etc/nginx/nginx.conf. Como a saída de erro já indicava
-        um erro crítico nesse arquivo [emerg] a busca pelo motivo da falha da inicializacao do servido deveria continuar por ali.        
-        
+    Logo após a remoção do parâmetro incorreto, é preciso recarregar o daemon do systemd para que ele reconheça
+    a nova configuração da biblioteca do Nginx com o comando systemctl daemon-reload. No entanto, o serviço ainda apresentava
+    erros.
+    A flag -t do Nginx indica que num primeiro momento é feito um teste de sintaxe e uma tentativa de carregar as informações
+    presentes no arquivo arquivo de configuração do Nginx, que é o /etc/nginx/nginx.conf. Como a saída de erro já indicava
+    um erro crítico nesse arquivo [emerg] a busca pelo motivo da falha da inicializacao do servido deveria continuar por ali. 
+    Como o arquivo de configuracao e menos critico que o arquivo da biblioteca do nginx, nesse caso posso simplesmente corrigir
+    os erros de sintaxe presente no arquivo e testar novamente o servico.        
         
   
 ## 5. SSL
