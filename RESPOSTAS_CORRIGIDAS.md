@@ -207,8 +207,8 @@ de par de chaves.
     
     Subsystem sftp /usr/lib/openssh/sftp-server -> Ativa o subsistema de ftp seguro.
 
-    UsePAM no ->  Permite a autenticação usando o PAM (yes) ou não (no) 
-    o padrão é "não".  
+    UsePAM no ->  Permite a autenticação usando o PAM (yes) ou não (no). 
+                  O padrão é "não".  
     
 
     Essa tarefa exige apenas a alteração do arquivo /etc/ssh/sshd_config e a reinicialização do daemon do ssh
