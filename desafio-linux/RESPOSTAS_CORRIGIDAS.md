@@ -495,18 +495,18 @@ Dica: para iniciar o serviço utilize o comando `systemctl start nginx`.
 Utilizando o comando de sua preferencia (openssl, cfssl, etc...) crie uma autoridade certificadora (CA) para o hostname `desafio.local`.
 Em seguida, utilizando esse CA para assinar, crie um certificado de web server para o hostname `www.desafio.local`.
 
-    Um certificado é necessário para que um site tenha criptografia HTTPS. Um certificado SSL contém a chave pública do site, o nome de domínio
-    emitido para ele, a assinatura digital da autoridade de certificação emissora e outras informações importantes. É usado para autenticar a
-    identidade de um servidor de origem, o que ajuda a evitar a falsificação do domínio e outros métodos que os invasores usam para se passar
-    por um site e enganar os usuários.
+    Um certificado é necessário para que um site tenha criptografia HTTPS. Um certificado SSL contém a chave pública do site,
+    o nome de domínio emitido para ele, a assinatura digital da autoridade de certificação emissora e outras informações importantes.
+    É usado para autenticar a identidade de um servidor de origem, o que ajuda a evitar a falsificação do domínio e outros métodos
+    que os invasores usam para se passar por um site e enganar os usuários.
 
     Tipos de certificados:
     
-    Certificados SSL de domínio único: Um certificado SSL de domínio único se aplica a um domínio e apenas a um domínio. Ele não pode ser usado
-    para autenticar qualquer outro domínio, nem mesmo subdomínios do domínio para o qual foi emitido.
+    Certificados SSL de domínio único: Um certificado SSL de domínio único se aplica a um domínio e apenas a um domínio. Ele não pode
+    ser usado para autenticar qualquer outro domínio, nem mesmo subdomínios do domínio para o qual foi emitido.
     
-    Certificados SSL wildcard: Os certificados SSL wildcard são para um domínio único e todos os seus subdomínios. Um subdomínio está sob a
-    proteção do domínio principal. Normalmente, os subdomínios terão um endereço que começa com algo diferente de "www".
+    Certificados SSL wildcard: Os certificados SSL wildcard são para um domínio único e todos os seus subdomínios. Um subdomínio está
+    sob a proteção do domínio principal. Normalmente, os subdomínios terão um endereço que começa com algo diferente de "www".
     
     Certificados SSL para vários domínios (MDC): Um certificados SSL para vários domínios, ou MDC, lista vários domínios distintos em um
     certificado. Com um MDC, os domínios que não são subdomínios um do outro podem compartilhar um certificado.
