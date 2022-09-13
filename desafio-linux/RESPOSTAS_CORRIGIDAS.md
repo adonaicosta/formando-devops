@@ -31,10 +31,11 @@ Dica: lembre-se que você possui acesso "físico" ao host.
     A partir desse momento, posso me certificar de que realmente estou no console como usuário root com o comando "whoami",
     além de conferir os comandos que estão disponíveis no shell informado com a linha "man builtins", e seguir com as
     modificações. De maneira geral é recomendado editar o arquivo /etc/sudoers utilizando o visudo, pois ele verifica se
-    há erros de sintaxe ao salvá-lo. O arquivo não será salvo se houver erros. Se você abrir o arquivo com um editor de
-    texto diferente, um erro de sintaxe pode resultar na perda do acesso ao sudo. Outro detalhe importante é que o comando
-    visudo não pode permitir a edição do arquivo /etc/sudoers simultaneamente, travando o arquivo e se alguém tentar acessar
-    o mesmo, além de receber uma mensagem para tentar mais tarde.
+    há erros de sintaxe ao salvá-lo. O arquivo não será salvo se houver erros.
+    
+    Se você abrir o arquivo com um editor de texto diferente, um erro de sintaxe pode resultar na perda do acesso ao sudo.
+    Outro detalhe importante é que o comando visudo não pode permitir a edição do arquivo /etc/sudoers simultaneamente,
+    travando o arquivo e se alguém tentar acessar o mesmo, além de receber uma mensagem para tentar mais tarde.
     
     Regras do sudoers:    
     -> username    hosts=(users:groups)    commands   
@@ -493,6 +494,100 @@ Dica: para iniciar o serviço utilize o comando `systemctl start nginx`.
 
 Utilizando o comando de sua preferencia (openssl, cfssl, etc...) crie uma autoridade certificadora (CA) para o hostname `desafio.local`.
 Em seguida, utilizando esse CA para assinar, crie um certificado de web server para o hostname `www.desafio.local`.
+
+    Um certificado é necessário para que um site tenha criptografia HTTPS. Um certificado SSL contém a chave pública do site, o nome de domínio
+    emitido para ele, a assinatura digital da autoridade de certificação emissora e outras informações importantes. É usado para autenticar a
+    identidade de um servidor de origem, o que ajuda a evitar a falsificação do domínio e outros métodos que os invasores usam para se passar
+    por um site e enganar os usuários.
+
+    Tipos de certificados:
+    
+    Certificados SSL de domínio único: Um certificado SSL de domínio único se aplica a um domínio e apenas a um domínio. Ele não pode ser usado
+    para autenticar qualquer outro domínio, nem mesmo subdomínios do domínio para o qual foi emitido.
+    
+    Certificados SSL wildcard: Os certificados SSL wildcard são para um domínio único e todos os seus subdomínios. Um subdomínio está sob a
+    proteção do domínio principal. Normalmente, os subdomínios terão um endereço que começa com algo diferente de "www".
+    
+    Certificados SSL para vários domínios (MDC): Um certificados SSL para vários domínios, ou MDC, lista vários domínios distintos em um
+    certificado. Com um MDC, os domínios que não são subdomínios um do outro podem compartilhar um certificado.
+    
+    Atuar como uma autoridade de certificação (CA) significa lidar com pares de chaves privadas e certificados públicos. O primeiro par
+    criptográfico é o par raiz. Isso consiste na root key (ca.key.pem) e no root certificate (ca.cert.pem). Este par forma a identidade
+    de uma CA.
+    
+    mkdir /root/ca
+    cd /root/ca
+    mkdir certs crl newcerts private
+    chmod 700 private
+    touch index.txt
+    echo 1000 > serial
+    
+    Outro passo importante é criar um arquivo de configuração para o OpenSSL
+    A seção "ca" é obrigatória:
+    
+    [ ca ]
+    # `man ca`
+    default_ca = CA_default
+    
+    Certifique-se de declarar o diretório criado anteriormente "/root/ca":
+    
+    [ CA_default ]
+    # Directory and file locations.
+    dir               = /root/ca
+    certs             = $dir/certs
+    crl_dir           = $dir/crl
+    new_certs_dir     = $dir/newcerts
+    database          = $dir/index.txt
+    serial            = $dir/serial
+    RANDFILE          = $dir/private/.rand
+
+    # The root key and root certificate.
+    private_key       = $dir/private/ca.key.pem
+    certificate       = $dir/certs/ca.cert.pem
+
+    # For certificate revocation lists.
+    crlnumber         = $dir/crlnumber
+    crl               = $dir/crl/ca.crl.pem
+    crl_extensions    = crl_ext
+    default_crl_days  = 30
+
+    # SHA-1 is deprecated, so use SHA-2 instead.
+    default_md        = sha256
+
+    name_opt          = ca_default
+    cert_opt          = ca_default
+    default_days      = 375
+    preserve          = no
+    policy            = policy_strict
+    
+    A seção "req_distinguished_name" declara as informações normalmente exigidas em uma solicitação de assinatura de certificado.
+
+    [ req_distinguished_name ]
+    # See <https://en.wikipedia.org/wiki/Certificate_signing_request>.
+    countryName                     = Country Name (2 letter code)
+    stateOrProvinceName             = State or Province Name
+    localityName                    = Locality Name
+    0.organizationName              = Organization Name
+    organizationalUnitName          = Organizational Unit Name
+    commonName                      = Common Name
+    emailAddress                    = Email Address
+    
+    Criação da root key:
+    
+    cd /root/ca
+    openssl genrsa -aes256 -out private/ca.key.pem 4096
+    chmod 400 private/ca.key.pem
+    
+    Criação do root certificate:
+    
+    cd /root/ca
+    openssl req -config openssl.cnf \
+    -key private/ca.key.pem \
+    -new -x509 -days 7300 -sha256 -extensions v3_ca \
+    -out certs/ca.cert.pem
+    chmod 444 certs/ca.cert.pem
+
+
 
 ### 5.2 Uso de certificados
 
