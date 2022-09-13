@@ -586,7 +586,24 @@ Em seguida, utilizando esse CA para assinar, crie um certificado de web server p
     -key private/ca.key.pem \
     -new -x509 -days 7300 -sha256 -extensions v3_ca \
     -out certs/ca.cert.pem
-    chmod 444 certs/ca.cert.pem 
+    chmod 444 certs/ca.cert.pem
+    
+    Se você estiver criando um par criptográfico para uso com um servidor web (por exemplo, nginx), precisará inserir essa senha
+    toda vez que reiniciar o servidor web. Você pode omitir a opção -aes256 para criar uma chave sem senha.
+    
+    Criação da chave:
+    
+    cd /root/ca
+    openssl genrsa \
+    -out intermediate/private/www.desafio.local.pem 2048
+    chmod 400 intermediate/private/www.desafio.local.pem
+    
+    Criação do certificado:
+    
+    cd /root/ca
+    openssl req -config intermediate/openssl.cnf \
+    -key intermediate/private/www.desafio.local.key.pem \
+    -new -sha256 -out intermediate/csr/www.desafio.local.csr.pem    
 
 
 ### 5.2 Uso de certificados
