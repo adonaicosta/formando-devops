@@ -557,7 +557,7 @@ Em seguida, utilizando esse CA para assinar, crie um certificado de web server p
     # SHA-1 is deprecated, so use SHA-2 instead.
     default_md        = sha256
 
-    name_opt          = desafio.local
+    name_opt          = ca_default
     cert_opt          = ca_default
     default_days      = 375
     preserve          = no
