@@ -516,14 +516,16 @@ Em seguida, utilizando esse CA para assinar, crie um certificado de web server p
     O primeiro par criptográfico é o par raiz. Isso consiste na root key (ca.key.pem) e no root certificate (ca.cert.pem).
     Este par forma a identidade de uma CA.
     
+    Banco de dados para acompanhar os certificados assinados:
+    
     mkdir /root/ca
     cd /root/ca
     mkdir certs crl newcerts private
     chmod 700 private
     touch index.txt
     echo 1000 > serial
-    
-    Outro passo importante é criar um arquivo de configuração para o OpenSSL
+       
+    Outro passo importante é criar um arquivo de configuração para o OpenSSL.
     A seção "ca" é obrigatória:
     
     [ ca ]
@@ -533,7 +535,7 @@ Em seguida, utilizando esse CA para assinar, crie um certificado de web server p
     Certifique-se de declarar o diretório criado anteriormente "/root/ca":
     
     [ CA_default ]
-    # Directory and file locations.
+  
     dir               = /root/ca
     certs             = $dir/certs
     crl_dir           = $dir/crl
@@ -555,7 +557,7 @@ Em seguida, utilizando esse CA para assinar, crie um certificado de web server p
     # SHA-1 is deprecated, so use SHA-2 instead.
     default_md        = sha256
 
-    name_opt          = ca_default
+    name_opt          = desafio.local
     cert_opt          = ca_default
     default_days      = 375
     preserve          = no
@@ -564,7 +566,7 @@ Em seguida, utilizando esse CA para assinar, crie um certificado de web server p
     A seção "req_distinguished_name" declara as informações normalmente exigidas em uma solicitação de assinatura de certificado.
 
     [ req_distinguished_name ]
-    # See <https://en.wikipedia.org/wiki/Certificate_signing_request>.
+    
     countryName                     = Country Name (2 letter code)
     stateOrProvinceName             = State or Province Name
     localityName                    = Locality Name
@@ -603,7 +605,7 @@ Em seguida, utilizando esse CA para assinar, crie um certificado de web server p
     cd /root/ca
     openssl req -config intermediate/openssl.cnf \
     -key intermediate/private/desafio.local.key.pem \
-    -new -sha256 -out intermediate/csr/desafio.local.csr    
+    -new -sha256 -out intermediate/csr/desafio.local.csr.pem    
 
 
 ### 5.2 Uso de certificados
@@ -623,15 +625,20 @@ curl https://www.desafio.local
  
     vim /etc/nginx/nginx.conf
     # descomentar a seção do Servidor TLS		
-    ssl_certificate "/etc/pki/nginx/desafio.local.csr";
+    ssl_certificate "/etc/pki/nginx/desafio.local.csr.pem";
     ssl_certificate_key "/etc/pki/nginx/private/desafio.local.pem";
     sysmtemctl restart nginx
     
     ! importante: no processo de criação da chave é exigido uma passphrase, mas o nginx não vai conseguir
     subir desse modo, e o que pode ser feito é remover a passphrase depois que a chave foi gerada:
-    openssl rsa -in desafio.local.pem -out desafio.local.pem
     
+    openssl rsa -in desafio.local.pem -out desafio.local.pem  
+   
+   Você pode configurar seu cliente para ignorar certificados autoassinados (por exemplo, -k com curl), mas a melhor prática é
+   adicionar adequadamente esse certificado como uma autoridade de certificação confiável:
 
+   - cp desafio.local.csr.pem   /etc/pki/ca-trust/source/anchors/mycert.pem
+   - update-ca-trust
 
 ## 6. Rede
 
