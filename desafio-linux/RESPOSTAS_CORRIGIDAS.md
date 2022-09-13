@@ -618,7 +618,8 @@ abaixo para utilizar seu CA.
 curl https://www.desafio.local
 
 ```
-    Como essa parte costuma ser genérica, apenas reaproveitei a outra resposta, apenas com o cuidado de fazer os ajustes necessários:
+    Como essa parte costuma ser genérica, apenas reaproveitei a outra resposta, apenas com o cuidado de fazer
+    os ajustes necessários:
 
     cp desafio.local.csr  /etc/pki/ngix/
     cp desafio.local.pem /etc/pki/nginx/private/
@@ -634,11 +635,11 @@ curl https://www.desafio.local
     
     openssl rsa -in desafio.local.pem -out desafio.local.pem  
    
-   Você pode configurar seu cliente para ignorar certificados autoassinados (por exemplo, -k com curl), mas a melhor prática é
-   adicionar adequadamente esse certificado como uma autoridade de certificação confiável:
+    Você pode configurar seu cliente para ignorar certificados autoassinados (por exemplo, -k com curl), mas a melhor prática é
+    adicionar adequadamente esse certificado como uma autoridade de certificação confiável:
 
-   - cp desafio.local.csr.pem   /etc/pki/ca-trust/source/anchors/mycert.pem
-   - update-ca-trust
+    - cp desafio.local.csr.pem   /etc/pki/ca-trust/source/anchors/mycert.pem
+    - update-ca-trust
 
 ## 6. Rede
 
