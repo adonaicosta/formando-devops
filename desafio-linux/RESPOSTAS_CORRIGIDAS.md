@@ -594,9 +594,9 @@ Utilizando os certificados criados anteriormente, instale-os no serviço `nginx`
 `www.desafio.local`. Certifique-se que o comando abaixo executa com sucesso e responde o mesmo que o desafio `4`. Voce pode inserir flags no comando
 abaixo para utilizar seu CA.
 
-    ```
-    curl https://www.desafio.local
-    ```
+```
+curl https://www.desafio.local
+```
 
     Se você estiver criando um par criptográfico para uso com um servidor web (por exemplo, nginx), precisará inserir essa senha
     toda vez que reiniciar o servidor web. Você pode omitir a opção -aes256 para criar uma chave sem senha.
