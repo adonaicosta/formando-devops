@@ -595,15 +595,15 @@ Em seguida, utilizando esse CA para assinar, crie um certificado de web server p
     
     cd /root/ca
     openssl genrsa \
-    -out intermediate/private/www.desafio.local.pem 2048
-    chmod 400 intermediate/private/www.desafio.local.pem
+    -out intermediate/private/desafio.local.pem 2048
+    chmod 400 intermediate/private/desafio.local.pem
     
     Criação do certificado:
     
     cd /root/ca
     openssl req -config intermediate/openssl.cnf \
-    -key intermediate/private/www.desafio.local.key.pem \
-    -new -sha256 -out intermediate/csr/www.desafio.local.csr.pem    
+    -key intermediate/private/desafio.local.key.pem \
+    -new -sha256 -out intermediate/csr/desafio.local.csr    
 
 
 ### 5.2 Uso de certificados
@@ -614,24 +614,23 @@ abaixo para utilizar seu CA.
 
 ```
 curl https://www.desafio.local
-```
 
-    Se você estiver criando um par criptográfico para uso com um servidor web (por exemplo, nginx), precisará inserir essa senha
-    toda vez que reiniciar o servidor web. Você pode omitir a opção -aes256 para criar uma chave sem senha.
+```
+    Como essa parte costuma ser genérica, apenas reaproveitei a outra resposta, apenas com o cuidado de fazer os ajustes necessários:
+
+    cp desafio.local.csr  /etc/pki/ngix/
+    cp desafio.local.pem /etc/pki/nginx/private/
+ 
+    vim /etc/nginx/nginx.conf
+    # descomentar a seção do Servidor TLS		
+    ssl_certificate "/etc/pki/nginx/desafio.local.csr";
+    ssl_certificate_key "/etc/pki/nginx/private/desafio.local.pem";
+    sysmtemctl restart nginx
     
-    Criação da chave:
+    ! importante: no processo de criação da chave é exigido uma passphrase, mas o nginx não vai conseguir
+    subir desse modo, e o que pode ser feito é remover a passphrase depois que a chave foi gerada:
+    openssl rsa -in desafio.local.pem -out desafio.local.pem
     
-    cd /root/ca
-    openssl genrsa -aes256 \
-    -out intermediate/private/www.desafio.local.pem 2048
-    chmod 400 intermediate/private/www.desafio.local.pem
-    
-    Criação do certificado:
-    
-    cd /root/ca
-    openssl req -config intermediate/openssl.cnf \
-    -key intermediate/private/www.desafio.local.key.pem \
-    -new -sha256 -out intermediate/csr/www.desafio.local.csr.pem
 
 
 ## 6. Rede
