@@ -529,7 +529,7 @@ Em seguida, utilizando esse CA para assinar, crie um certificado de web server p
     A seção "ca" é obrigatória:
     
     [ ca ]
-    # `man ca`
+  
     default_ca = CA_default
     
     Certifique-se de declarar o diretório criado anteriormente "/root/ca":
