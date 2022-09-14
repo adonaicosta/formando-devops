@@ -840,19 +840,32 @@ Aumente a partição LVM `sdb1` para `5Gi` e expanda o filesystem para o tamanho
 	do recurso e aumentando seu IOPs (input/output operations per second, operações de entrada e saída por segundo), uma métrica
 	de performance de disco muito importante.
 	
+	Quando você cria um grupo de volume, ele é por padrão desativado. Isto quer dizer que volumes lógicos naquele grupo estão
+	acessíveis e sujeitos à mudança. Existem diversas circunstâncias pelas quais você precisa tornar um grupo de volume inativo
+	e assim desconhecidos para o kernel. Para desativar ou ativar um grupo de volume, use o argumento -a (--available) do comando
+	vgchange, seguido da letra "n" (no). Para alterar os parâmetros de um volume lógico, use o comando lvchange. 
+	Se o bloqueio de cluster estiver ativado, adicione "e" para ativar ou deastivar um grupo de volume exclusivamente num nó,
+	ou "i" para ativar ou/desativar um grupo de volume no nó local. Volumes lógicos com snapshots de host únicos são sempre ativados
+	exclusivamente porque eles podem somente serem usados em um nó por vez.
+	
 	Os passos que vou apresentar para expandir o LVM podem apenas ser usados se a partição criada for a última do disco,
 	como é o caso do desafio apresentado:
 	
-	-> umount /data - para poder operar sobre a partição e manter os dados desse diretório intactos	
-	-> fdisk /dev/sdb - para entrar no utilitário de particionamento
+	-> umount /data : para poder operar sobre a partição e manter os dados desse diretório intactos
+	-> lvchange -a n /dev/data_vg/data_lv : como especificado anteriormente
+	-> fdisk /dev/sdb : para entrar no utilitário de particionamento
 	-> Opção -d para deletar a partição
 	-> Opção -n para recriar a partição (e já definir o novo tamanho)
 	-> Opção -w para gravar as alterações
-	-> partprobe - para informar o sistema sobre as alterações no particionamento	
-	-> pvresize /dev/sdb1 - para expandir o volume físico
-	-> mount /data
+	-> partprobe : informar o sistema sobre as alterações no particionamento	
+	-> pvresize /dev/sdb1 : expandir o volume físico
+	-> lvchange -a y (yes) /dev/data_vg/data_lv : tornar o LV novamente disponível
+  	-> lvextend -L 5G /dev/data_vg/data_lv : expandir para o tamanho solicitado
+  	-> efsck -f  /dev/data_vg/data_lv : checar a integridade do sistema de arquivos e permitir a utilização do comando resize2fs
+	-> resize2fs /dev/data_vg/data_lv : para expandir o LV para o tamanho máximo disponível	
+	-> mount /data - montar novamente o diretório da partição
 	
-
+	
 ### 8.2 Criar partição LVM
 
 Crie uma partição LVM `sdb2` com `5Gi` e formate com o filesystem `ext4`.
