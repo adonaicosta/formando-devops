@@ -820,6 +820,21 @@ Configure o `logrotate` para rotacionar arquivos do diretório `/var/log/nginx`
 
 Aumente a partição LVM `sdb1` para `5Gi` e expanda o filesystem para o tamanho máximo.
 
+	LVM ou Logical Volume Management é uma solução para o gerenciamento de dispositivos em bloco dentro do ambiente
+	GNU/Linux via blocos virtuais.  Todo sistema GNU/Linux possui dispositivos, e esses em sua maioria são identificados
+	como diretórios /dev, e os principais tipos são os dispostivivos de bloco e de caracter.
+	
+	LVM é justamente o gerenciamento desses dispositivos de bloco de uma maneira mais inteligente e que permita algumas
+	facilidades como a expansão em caso de disco cheio. Basicamente pegamos nossos block devices , que podem ser – HDs, SSDs
+	ou NVMes e agrupamos eles em grupos de volumes que posteriormente são consumidos em volumes lógicos. Portanto na arquitetura
+	do LVM temos 3 elementos importantes,  PV, VG e LV sendo:
+
+	PV: Physical Volume, volume físico ou nosso HD sem ser particionado.
+	VG: Volume Group, grupo de volumes ou o conjunto de PVs.
+	LV: Logical Volume, volume lógico, ou seja, nossa partição.
+	
+	
+
 ### 8.2 Criar partição LVM
 
 Crie uma partição LVM `sdb2` com `5Gi` e formate com o filesystem `ext4`.
