@@ -833,6 +833,24 @@ Aumente a partição LVM `sdb1` para `5Gi` e expanda o filesystem para o tamanho
 	VG: Volume Group, grupo de volumes ou o conjunto de PVs.
 	LV: Logical Volume, volume lógico, ou seja, nossa partição.
 	
+	Dentro do LVM temos duas formas de consumo dos discos, ou PVs, uma Linear e outro Striped ou traduzindo para português
+	algo como tiras ou marcações. O formato linear faz com que os discos que fazem parte de um VG sejam consumidos um a um,
+	ou seja, se tenho dois discos primeiramente seria consumido todo o primeiro disco para somente então começar a fazer
+	uso do segundo disco. Já o striped  teriamos a distribuição dos dados entre os dois discos levando a melhor utilização
+	do recurso e aumentando seu IOPs (input/output operations per second, operações de entrada e saída por segundo), uma métrica
+	de performance de disco muito importante.
+	
+	Os passos que vou aapresentar para expandir o LVM podem apenas ser usados se a partição criada for a última do disco,
+	como é o caso do desafio apresentado:
+	
+	-> umount /data - para poder operar sobre a partição e manter os dados desse diretório	
+	-> fdisk /dev/sdb - para entrar no utilitário de particionamento
+	-> Opção -d para deletar a partição
+	-> Opção -n para recriar a partição (e já definir o novo tamanho)
+	-> Opção -w para gravar as alterações
+	-> partprobe - para informar o sistema sobre as alterações no particionamento	
+	-> pvresize - para expandir o volume físico
+	-> mount /data
 	
 
 ### 8.2 Criar partição LVM
