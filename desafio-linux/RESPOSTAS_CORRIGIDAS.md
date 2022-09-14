@@ -843,7 +843,7 @@ Aumente a partição LVM `sdb1` para `5Gi` e expanda o filesystem para o tamanho
 	Os passos que vou apresentar para expandir o LVM podem apenas ser usados se a partição criada for a última do disco,
 	como é o caso do desafio apresentado:
 	
-	-> umount /data - para poder operar sobre a partição e manter os dados desse diretório	
+	-> umount /data - para poder operar sobre a partição e manter os dados desse diretório intactos	
 	-> fdisk /dev/sdb - para entrar no utilitário de particionamento
 	-> Opção -d para deletar a partição
 	-> Opção -n para recriar a partição (e já definir o novo tamanho)
