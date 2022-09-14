@@ -621,7 +621,7 @@ curl https://www.desafio.local
     Como essa parte costuma ser genérica, apenas reaproveitei a outra resposta, apenas com o cuidado de fazer
     os ajustes necessários:
 
-    cp desafio.local.csr,pem  /etc/pki/ngix/
+    cp desafio.local.csr.pem  /etc/pki/ngix/
     cp desafio.local.pem /etc/pki/nginx/private/
  
     vim /etc/nginx/nginx.conf
