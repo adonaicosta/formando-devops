@@ -840,7 +840,7 @@ Aumente a partição LVM `sdb1` para `5Gi` e expanda o filesystem para o tamanho
 	do recurso e aumentando seu IOPs (input/output operations per second, operações de entrada e saída por segundo), uma métrica
 	de performance de disco muito importante.
 	
-	Os passos que vou aapresentar para expandir o LVM podem apenas ser usados se a partição criada for a última do disco,
+	Os passos que vou apresentar para expandir o LVM podem apenas ser usados se a partição criada for a última do disco,
 	como é o caso do desafio apresentado:
 	
 	-> umount /data - para poder operar sobre a partição e manter os dados desse diretório	
@@ -856,6 +856,18 @@ Aumente a partição LVM `sdb1` para `5Gi` e expanda o filesystem para o tamanho
 ### 8.2 Criar partição LVM
 
 Crie uma partição LVM `sdb2` com `5Gi` e formate com o filesystem `ext4`.
+
+	Essa tarefa também utiliza o fdisk para criar a nova partição sdb2 com os 5G restantes da tarefa anterior e também
+	o comando partprobe para informar o kernel sobre as alterações na tabela de partição. No entanto,é preciso associar
+	essa nova partição com um volume físico do LVM:
+	
+	-> pvcreate /dev/sdb2
+	-> vgcreate nome_VG /dev/sbd2
+	-> lvcreate -L 5G -n nome_LV nome_VG
+	-> mkfs.ext4 /dev/mapper/nome_VG-nome_LV
+	
+	A partir desse momento a nova partição LVM está pronta para ser montada.
+	
 
 ### 8.3 Criar partição XFS
 
