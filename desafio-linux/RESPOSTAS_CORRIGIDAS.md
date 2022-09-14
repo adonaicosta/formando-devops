@@ -783,6 +783,32 @@ Apresente a resposta completa, com headers, da URL `https://httpbin.org/response
 
 Configure o `logrotate` para rotacionar arquivos do diretório `/var/log/nginx`
 
+    Para configurar o logrotate, os seguintes passoe são necessários:
+    
+        yum install logrotate
+		vim /etc/logrotate.conf (verificar se /etc/logrotate.d está na sessão "include")
+		vim /etc/logrotate.d./nginx
+		
+			var/log/nginx/*.log {
+			daily
+			missingok
+			rotate 10
+			compress
+			delaycompress
+			notifempty
+			create 0640 www-data adm
+			sharedscripts
+			postrotate
+				invoke-rc.d nginx rotate >/dev/null 2>&1
+			endscript
+		}
+		
+		testando a configuração do logrotate:
+			
+			logrotate -d /etc/logrotate.conf -> força a execução do logrotate
+			cat /var/lib/logrotate/logrotate.status -> mostra os arquivos rotacionados
+            
+
 ## 8. Filesystem
 
 ### 8.1 Expandir partição LVM
