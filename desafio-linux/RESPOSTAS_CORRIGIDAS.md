@@ -897,3 +897,117 @@ Utilizando o disco `sdc` em sua todalidade (sem particionamento), formate com o 
 	
 	yum install xfsprogs xfsdump
 	mkfs.xfs /dev/sdc
+	
+Referências:	
+
+	https://help.ubuntu.com/kubuntu/desktopguide/pt_BR/root-and-sudo.html
+
+	https://www.alura.com.br/artigos/como-recuperar-senha-de-root-no-linux
+
+	https://rafandroid.com/como-adicionar-usuarios-ao-sudoers-no-linux/
+
+	https://www.linuxforce.com.br/comandos-linux/comandos-linux-comando-visudo/
+
+	https://www.devmedia.com.br/configurar-rede-linux-via-terminal-linha-de-comando/21902
+
+	https://acervolima.com/execute-comandos-como-root-com-sudo/
+
+	https://professor-falken.com/pt/linux/como-ver-los-grupos-a-los-que-pertenece-un-usuario-de-linux/
+
+	https://pt.phhsnews.com/add-user-to-group-on-linux4132
+
+	https://ironlinux.com.br/gerenciar-usuarios-e-grupos-no-linux/
+
+	https://stackoverflow.com/questions/54034302/creating-mailbox-file-file-exists
+
+	https://guialinux.uniriotec.br/groupmod/#:~:text=S%C3%A3o%20op%C3%A7%C3%B5es%20do%20comando,grupos%20com%20o%20mesmo%20GID.
+
+	https://ajuda.locaweb.com.br/wiki/desativar-autenticacao-via-senha-no-ssh-cloud-server/
+
+	https://ajuda.locaweb.com.br/wiki/desativar-autenticacao-via-senha-no-ssh-cloud-server/
+
+	https://www.ibm.com/docs/pt-br/host-on-demand/12.0?topic=SSS9FA_12.0.0/com.ibm.hod.doc/tutorials/ssh/ssh-pk05.html
+
+	https://docs.microsoft.com/pt-br/power-platform-release-plan/2021wave2/power-automate/convert-base64-encoded-text-file-vice-versa
+
+	https://ubunlog.com/pt/base64-codificacion-decodificacion-terminal/
+
+	https://www.vivaolinux.com.br/topico/C-C++/EOF-e-quebra-de-linha-Windows-ee-Linux
+
+	https://dos2unix.sourceforge.io/
+
+	https://acervolima.com/comandos-dos2unix-e-unix2dos/
+
+	https://www.linuxfromscratch.org/blfs/view/svn/postlfs/xfsprogs.html
+
+	https://www.seguro.targethost.com.br/knowledgebase/131/Como-formatar-uma-unidade-com-sistema-de-arquivos-XFS-no-CentOS-6.html
+
+	https://www.vivaolinux.com.br/dica/Decifrando-o-etcfstab
+
+	https://web.mit.edu/rhel-doc/3/rhel-sag-pt_br-3/s1-openssh-server-config.html
+
+	https://tecdicas.com/como-criar-e-utilizar-chaves-ssh-no-windows-e-linux/
+
+	https://www.ssh.com/academy/ssh/keygen
+
+	https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys-on-ubuntu-20-04-pt
+
+	https://docs.github.com/pt/authentication/connecting-to-github-with-ssh/checking-for-existing-ssh-keys
+
+	https://www.gta.ufrj.br/grad/10_1/kerberos/gssapi.html
+
+	https://en.wikipedia.org/wiki/Generic_Security_Services_Application_Program_Interface
+
+	https://acervolima.com/como-encontrar-todas-as-tentativas-de-login-ssh-com-falha-no-linux/
+
+	https://docs.github.com/pt/authentication/troubleshooting-ssh/error-permission-denied-publickey
+
+	https://man.openbsd.org/ssh
+
+	https://www.openssh.com/legacy.html
+
+	https://serverfault.com/questions/674254/selinux-logrotate-is-not-rotating-nginx-logs
+
+	https://www.nginx.com/resources/wiki/start/topics/examples/systemd/
+
+	https://e-tinet.com/linux/systemd/
+
+	https://www.vivaolinux.com.br/etc/sshd_config-4
+
+	https://www.cloudflare.com/pt-br/learning/ssl/types-of-ssl-certificates/
+
+	https://jamielinux.com/docs/openssl-certificate-authority/create-the-root-pair.html#prepare-the-directory
+
+	https://www.hostgator.com.br/blog/comando-linux-ping/
+
+	https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-using-firewalld-on-centos-8-pt
+
+	https://www.monsta.com.br/admin/uploader/uploads/Utilizando_o_Firewalld.pdf
+
+	https://www.alura.com.br/artigos/curl-como-usar
+
+	https://ronanlopes.me/gerenciando-arquivos-de-log-no-linux-com-o-logrotate/
+
+	https://access.redhat.com/documentation/pt-br/red_hat_enterprise_linux/6/html/logical_volume_manager_administration/lvm_cli
+
+	https://www.guiafoca.org/guiaonline/intermediario/ch05s09.html
+
+	https://wiki.archlinux.org/title/LVM_(Portugu%C3%AAs)
+
+	https://www.ibm.com/docs/pt-br/psww2500/2.3.2.0?topic=images-extending-partition-file-system-sizes
+
+	https://askubuntu.com/questions/536955/e2fsck-cannot-continue-aborting
+
+	https://www.adonai.eti.br/2019/10/lvm-redimensionando-particoes-com-lvm/
+
+	https://blog.4linux.com.br/introducao-ao-lvm/#:~:text=Portanto%20na%20arquitetura%20do%20LVM,%2C%20ou%20seja%2C%20nossa%20parti%C3%A7%C3%A3o.
+
+	https://www.seguro.targethost.com.br/knowledgebase/116/Como-redimensionar-uma-particao-Linux-sem-reboot.html
+
+	https://www.unix.com/man-page/centos/8/partprobe/
+
+	https://www.linuxforce.com.br/comandos-linux/comandos-linux-comando-partprobe/
+
+	https://e-tinet.com/linux/lvm/
+
+	https://man7.org/linux/man-pages/man8/lvchange.8.html
