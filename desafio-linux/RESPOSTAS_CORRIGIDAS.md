@@ -721,7 +721,7 @@ Apresente a resposta completa, com headers, da URL `https://httpbin.org/response
     sua página. Você pode usar o cURL para fazer tudo isso, exceto a renderização, que cabe ao seu navegador.
     
     Conforme comentado durante a resolução do desafio, apesar do enunciado exigir a resposta completa com headers
-    (que pode ser obtida com curl -i) o mais correto, tendo em vista o escopo da atividade, emitir o comando curl -v,
+    (que pode ser obtida com curl -i) o mais correto, tendo em vista o escopo da atividade, seria emitir o comando curl -v,
     pois desse modo é possível observar todo o processo de requisição e resposta, um mecanismo útil para quem precisa
     monitorar o status de uma aplicação para encontrar ou solucionar falhas, ou mesmo para avaliar possíveis melhorias
     de performance. Um bom exemplo disso sãa os testes de API's REST, que podem ser implementados emergencialmente ou
