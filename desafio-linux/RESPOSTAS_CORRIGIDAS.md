@@ -658,8 +658,58 @@ ping 8.8.8.8
     O comando já estava funcionando na máquina do desafio, mas caso não estivesse uma solução seria acrescentar
     essa regra no firewall:
 
-    iptables -A INPUT -p icmp --icmp-type 8 -s $WAN -j ACCEPT 
+    iptables -A INPUT -p icmp --icmp-type 8 -s $WAN -j ACCEPT
     
+    No entanto, o CentOS utiliza o Firewalld para gerenciar o filtro de pacotes baseado em iptables. Esse firewall possui algumas
+    regras padrão e trabalha com o conceito de zonas onde a liberação de serviços é feito dentro delas. As zonas definem
+    o tipo de tráfego que será permitido baseado no nível de confiança da rede onde o seu servidor está conectado.
+    Cada zona está atrelada a uma interface de rede existente no servidor.
+    
+    O comando abaixo lista as zonas existentes:
+    
+    firewall-cmd --get-zones
+    
+    drop: Todos os pacotes são descartados.
+    block: Todos os pacotes são rejeitados.
+    public: Rede que você não conhece, pública.
+    external: Rede externa onde o servidor com o firewalld funciona como um
+    gateway: para a rede interna. É configurada com mascaramento para manter a privacidade da rede interna.
+    internal: É a parte interna da rede. Equipamentos nessa rede possuem um nível maior de confiança e serviços adicionais estão disponíveis.
+    dmz: São equipamentos isolados, ou seja, que não devem possuir acesso a sua rede. Apenas algumas conexões são permitidas.
+    work: Equipamentos de trabalho com liberação de serviços adicionais.
+    home: Equipamentos de casa. São dispositivos mais conhecidos e confiáveis e que possuem liberação para mais serviços que a zona work.
+    trusted: Equipamentos de confiança. Praticamente todos os serviços estão disponíveis para os equipamentos nesta zona
+    
+    O comando abaixo lista todas as regras existentes no serviço firewalld:
+    
+        firewall-cmd --list-all
+    
+    Para listar apenas as regras de uma determinada zona utilize a opção –zone:
+    
+        firewall-cmd –zone=public --list-all   
+    
+    Para modificar as regras de entrada do firewall do CentOS, utilizamos o comando firewall-cmd.
+    No exemplo abaixo é demonstrado como liberar as portas 80(TCP) e 443(TCP) para acesso da rede pública,
+    de forma permanente, para um servidor HTTP através da linha de comando:
+   
+        firewall-cmd --permanent --zone=public --add-port=80/tcp
+        firewall-cmd --permanent --zone=public –add-port=443/tcp
+        firewall-cmd --reload
+    
+    É possível definir um novo serviço. Os serviços são coleções de portas com um nome e descrição associados. Usar serviços
+    é mais fácil de administrar do que portas, mas exige um pouco de trabalho inicial. A maneira mais fácil de começar é copiar
+    um script existente (encontrado em /usr/lib/firewalld/services) para o diretório /etc/firewalld/services, onde o firewall
+    busca por definições não padrão. Exemplo:
+    
+        <?xml version="1.0" encoding="utf-8"?>
+        <service>
+          <short>SSH</short>
+          <description>Secure Shell</description>
+          <port protocol="tcp" port="22"/>
+        </service>
+        
+    Com essas opções acredito que se houvesse um problema real com ping ele poderia ser solucionado de maneira rápida e efetiva.   
+
 
 ### 6.2 HTTP
 
