@@ -849,7 +849,7 @@ Aumente a partição LVM `sdb1` para `5Gi` e expanda o filesystem para o tamanho
 	-> Opção -n para recriar a partição (e já definir o novo tamanho)
 	-> Opção -w para gravar as alterações
 	-> partprobe - para informar o sistema sobre as alterações no particionamento	
-	-> pvresize - para expandir o volume físico
+	-> pvresize /dev/sdb1 - para expandir o volume físico
 	-> mount /data
 	
 
