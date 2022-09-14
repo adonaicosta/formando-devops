@@ -649,9 +649,20 @@ Faço o comando abaixo funcionar:
 
 ```
 ping 8.8.8.8
+
 ```
+    Quando o ping não retorna uma resposta, significa que a comunicação da rede não foi estabelecida. Quando isso acontece,
+    nem sempre significa que o IP de destino não está ativo. Alguns hosts podem ter um firewall que está bloqueando o tráfego
+    ICMP ou configurado para não responder às solicitações de ping.
+    
+    O comando já estava funcionando na máquina do desafio, mas caso não estivesse uma solução seria acrescentar
+    essa regra no firewall:
+
+    iptables -A INPUT -p icmp --icmp-type 8 -s $WAN -j ACCEPT 
+    
 
 ### 6.2 HTTP
+
 
 Apresente a resposta completa, com headers, da URL `https://httpbin.org/response-headers?hello=world`
 
