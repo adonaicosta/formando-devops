@@ -870,14 +870,14 @@ Aumente a partição LVM `sdb1` para `5Gi` e expanda o filesystem para o tamanho
 
 Crie uma partição LVM `sdb2` com `5Gi` e formate com o filesystem `ext4`.
 
-	Essa tarefa também utiliza o fdisk para criar a nova partição sdb2 com os 5G restantes da tarefa anterior e também
-	o comando partprobe para informar o kernel sobre as alterações na tabela de partição. No entanto,é preciso associar
-	essa nova partição com um volume físico do LVM:
+	Essa tarefa também utiliza o fdisk para criar a nova partição sdb2 com os 5G restantes da tarefa anterior e comando partprobe
+	para informar o kernel sobre as alterações na tabela de partição. No entanto,é preciso associar	essa nova partição com um
+	volume físico do LVM:
 	
-	-> pvcreate /dev/sdb2
-	-> vgcreate nome_VG /dev/sbd2
-	-> lvcreate -L 5G -n nome_LV nome_VG
-	-> mkfs.ext4 /dev/mapper/nome_VG-nome_LV
+	-> pvcreate /dev/sdb2 : cria o novo volume físico
+	-> vgcreate nome_VG /dev/sbd2 : cria o novo grupo de volume e especifica seu nome
+	-> lvcreate -L 5G -n nome_LV nome_VG : cria o novo volume lógico com o tamanho e o nome especificados
+	-> mkfs.ext4 /dev/mapper/nome_VG-nome_LV : formata o volume lógico com o formato ext4
 	
 	A partir desse momento a nova partição LVM está pronta para ser montada.
 	
