@@ -808,10 +808,10 @@ Configure o `logrotate` para rotacionar arquivos do diretório `/var/log/nginx`
 			endscript
 		}
 		
-	Testando a configuração do logrotate:
+		Testando a configuração do logrotate:
 			
-		logrotate -d /etc/logrotate.conf -> força a execução do logrotate
-		cat /var/lib/logrotate/logrotate.status -> mostra os arquivos rotacionados
+			logrotate -d /etc/logrotate.conf -> força a execução do logrotate
+			cat /var/lib/logrotate/logrotate.status -> mostra os arquivos rotacionados
             
 
 ## 8. Filesystem
