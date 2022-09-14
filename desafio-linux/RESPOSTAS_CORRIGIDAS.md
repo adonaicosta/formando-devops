@@ -790,7 +790,7 @@ Configure o `logrotate` para rotacionar arquivos do diretório `/var/log/nginx`
 
     	Para configurar o logrotate, os seguintes passoe são necessários:
     
-        yum install logrotate
+        	yum install logrotate
 		vim /etc/logrotate.conf (verificar se /etc/logrotate.d está na sessão "include")
 		vim /etc/logrotate.d./nginx
 		
