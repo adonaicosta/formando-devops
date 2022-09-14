@@ -158,7 +158,7 @@ de par de chaves.
                       com arquivos lidos por todos os usuários.                        
   
     
-    AllowUsers Nome_do_usuario : Usuários que o ssh permite acessar remotamente o servidor . 
+    AllowUsers Nome_do_usuario : Usuários que o ssh permite acessar remotamente o servidor. 
 
     
     DenyUsers root : Está opção especifica quais usuários não terão permissão de acesso ao servidor
@@ -302,7 +302,7 @@ para acessar a VM.
     Lembre-se de alterar o usuário e o servidor para qual a chave será copiada. Após realizado este procedimento, sua chave
     já estará instalada e você poderá logar no usuário e hosts especificado apenas usando o comando:
 
-    ssh vagrant@ip-do-servidor
+    -> ssh vagrant@ip-do-servidor
     
     
     Servidor OpenSSH (caso não estivesse previamente configurado)
