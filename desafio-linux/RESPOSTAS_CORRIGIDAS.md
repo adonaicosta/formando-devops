@@ -716,15 +716,16 @@ ping 8.8.8.8
 
 Apresente a resposta completa, com headers, da URL `https://httpbin.org/response-headers?hello=world`
 
-    O cURL é uma ferramenta de linha de comando que funciona como interface para a biblioteca que faz o serviço pesado, o libcurl.
-    De forma geral, seu navegador realiza requisições web, recebe respostas, lê/escreve cookies e renderiza sua página. Você pode usar
-    o cURL para fazer tudo isso, exceto a renderização, que cabe ao seu navegador.
+    O cURL é uma ferramenta de linha de comando que funciona como interface para a biblioteca que faz o serviço pesado,
+    o libcurl. De forma geral, seu navegador realiza requisições web, recebe respostas, lê/escreve cookies e renderiza
+    sua página. Você pode usar o cURL para fazer tudo isso, exceto a renderização, que cabe ao seu navegador.
     
-    Conforme comentado durante a resolução do desafio, apesar do enunciado exigir a resposta completa com headers (que pode ser obtida
-    com curl -i) o mais correto, tendo em vista o escopo da atividade, emitir o comando curl -v, pois desse modo é possível observar
-    todo o processo de requisição e resposta, um mecanismo útil para quem precisa monitorar o status de uma aplicação para encontrar
-    ou solucionar falhas, ou mesmo para avaliar possíveis melhorias de performance. Um bom exemplo disso sãa os testes de API's REST, 
-    que podem ser implementados emergencialmente ou através de scripts para garantir o bom funcionamento do serviço.
+    Conforme comentado durante a resolução do desafio, apesar do enunciado exigir a resposta completa com headers
+    (que pode ser obtida com curl -i) o mais correto, tendo em vista o escopo da atividade, emitir o comando curl -v,
+    pois desse modo é possível observar todo o processo de requisição e resposta, um mecanismo útil para quem precisa
+    monitorar o status de uma aplicação para encontrar ou solucionar falhas, ou mesmo para avaliar possíveis melhorias
+    de performance. Um bom exemplo disso sãa os testes de API's REST, que podem ser implementados emergencialmente ou
+    através de scripts para garantir o bom funcionamento do serviço.
     
     Trying 34.227.213.82...
     * TCP_NODELAY set
