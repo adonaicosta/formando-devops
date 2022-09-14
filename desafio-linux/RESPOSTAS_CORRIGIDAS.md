@@ -724,9 +724,59 @@ Apresente a resposta completa, com headers, da URL `https://httpbin.org/response
     com curl -i) o mais correto, tendo em vista o escopo da atividade, emitir o comando curl -v, pois desse modo é possível observar
     todo o processo de requisição e resposta, um mecanismo útil para quem precisa monitorar o status de uma aplicação para encontrar
     ou solucionar falhas, ou mesmo para avaliar possíveis melhorias de performance. Um bom exemplo disso sãa os testes de API's REST, 
-    que podem ser implementados emergencialmente ou através de scripts para garantir o bom funcionamento do serviço.   
-       
+    que podem ser implementados emergencialmente ou através de scripts para garantir o bom funcionamento do serviço.
     
+    Trying 34.227.213.82...
+    * TCP_NODELAY set
+    * Connected to httpbin.org (34.227.213.82) port 443 (#0)
+    * ALPN, offering h2
+    * ALPN, offering http/1.1
+    * successfully set certificate verify locations:
+    *   CAfile: /etc/pki/tls/certs/ca-bundle.crt
+      CApath: none
+    * TLSv1.3 (OUT), TLS handshake, Client hello (1):
+    * TLSv1.3 (IN), TLS handshake, Server hello (2):
+    * TLSv1.2 (IN), TLS handshake, Certificate (11):
+    * TLSv1.2 (IN), TLS handshake, Server key exchange (12):
+    * TLSv1.2 (IN), TLS handshake, Server finished (14):
+    * TLSv1.2 (OUT), TLS handshake, Client key exchange (16):
+    * TLSv1.2 (OUT), TLS change cipher, Change cipher spec (1):
+    * TLSv1.2 (OUT), TLS handshake, Finished (20):
+    * TLSv1.2 (IN), TLS handshake, Finished (20):
+    * SSL connection using TLSv1.2 / ECDHE-RSA-AES128-GCM-SHA256
+    * ALPN, server accepted to use h2
+    * Server certificate:
+    *  subject: CN=httpbin.org
+    *  start date: Nov 21 00:00:00 2021 GMT
+    *  expire date: Dec 19 23:59:59 2022 GMT
+    *  subjectAltName: host "httpbin.org" matched cert's "httpbin.org"
+    *  issuer: C=US; O=Amazon; OU=Server CA 1B; CN=Amazon
+    *  SSL certificate verify ok.
+    * Using HTTP2, server supports multi-use
+    * Connection state changed (HTTP/2 confirmed)
+    * Copying HTTP/2 data in stream buffer to connection buffer after upgrade: len=0
+    * Using Stream ID: 1 (easy handle 0x5631ee295690)
+    > GET /response-headers?hello=world HTTP/2
+    > Host: httpbin.org
+    > User-Agent: curl/7.61.1
+    > Accept: */*
+    > 
+    * Connection state changed (MAX_CONCURRENT_STREAMS == 128)!
+    < HTTP/2 200 
+    < date: Wed, 07 Sep 2022 20:46:14 GMT
+    < content-type: application/json
+    < content-length: 89
+    < server: gunicorn/19.9.0
+    < hello: world
+    < access-control-allow-origin: *
+    < access-control-allow-credentials: true
+    < 
+    {
+      "Content-Length": "89", 
+      "Content-Type": "application/json", 
+      "hello": "world"
+    }
+    * Connection #0 to host httpbin.org left intact    
 
 ## 7. Logs
 
