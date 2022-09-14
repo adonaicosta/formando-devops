@@ -788,7 +788,7 @@ Configure o `logrotate` para rotacionar arquivos do diretório `/var/log/nginx`
 	O LogRotate é um utilitário de sistema que gerencia a rotatividade (de forma a manter somente registros de um período
 	mais recente) e compactação automáticas de arquivos de log.
 
-    	Para configurar o logrotate, os seguintes passoe são necessários:
+    	Para configurar o logrotate, os seguintes passos são necessários:
     
         	yum install logrotate
 		vim /etc/logrotate.conf (verificar se /etc/logrotate.d está na sessão "include")
