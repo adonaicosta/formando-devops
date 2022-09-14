@@ -693,7 +693,7 @@ ping 8.8.8.8
     de forma permanente, para um servidor HTTP através da linha de comando:
    
         firewall-cmd --permanent --zone=public --add-port=80/tcp
-        firewall-cmd --permanent --zone=public –add-port=443/tcp
+        firewall-cmd --permanent --zone=public –-add-port=443/tcp
         firewall-cmd --reload
     
     É possível definir um novo serviço. Os serviços são coleções de portas com um nome e descrição associados. Usar serviços
