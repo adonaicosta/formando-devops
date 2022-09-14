@@ -42,7 +42,8 @@ Resources:
       VpcId: !Ref NovoVPC
       AvailabilityZone: !Select [0, !GetAZs '' ]
       Tags:
-      - Key: Name
+      - 
+        Key: Name
         Value: !Sub ${AWS::StackName}-Privada
 
 
@@ -59,7 +60,8 @@ Resources:
       AllocationId: !GetAtt NATGatewayElasticIp.AllocationId
       SubnetId: !Ref NovaSubnet1
       Tags:
-      - Key: Name
+      - 
+        Key: Name
         Value: !Join ['', ["NAT-", !Ref "AWS::StackName" ]]
 
 # CRIANDO A ROUTE TABLE PRIVADA
@@ -68,7 +70,8 @@ Resources:
     Properties:
       VpcId: !Ref NovoVPC
       Tags: 
-      - Key: Name
+      - 
+        Key: Name
         Value: Privada
 
 # CRIANDO A ROUTE PRIVADA CONECTANDO NA ROUTE TABLE PRIVADA E NO NAT GW
@@ -85,7 +88,8 @@ Resources:
     Properties:
       VpcId: !Ref NovoVPC
       Tags: 
-      - Key: Name
+      - 
+        Key: Name
         Value: Publica
 
 # CRIANDO A ROUTE PUBLICA CONECTANDO NA ROUTE TABLE PUBLICA E NO NAT GW
@@ -210,7 +214,8 @@ Resources:
       KeyName: aws-class-2
       Monitoring: true
       SecurityGroupIds:
-        - !Ref NovoWEBSecGroup
+        - 
+          !Ref NovoWEBSecGroup
       SubnetId: !Ref NovaSubnet1
       Tags:
         -
