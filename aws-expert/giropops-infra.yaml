@@ -178,7 +178,8 @@ Resources:
       KeyName: aws-class-2
       Monitoring: true
       SecurityGroupIds:
-        - !Ref NovoDBSecGroup
+        - 
+          !Ref NovoDBSecGroup
       SubnetId: !Ref NovaSubnet2
       Tags:
         -
