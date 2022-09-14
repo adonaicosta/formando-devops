@@ -885,3 +885,15 @@ Crie uma partição LVM `sdb2` com `5Gi` e formate com o filesystem `ext4`.
 ### 8.3 Criar partição XFS
 
 Utilizando o disco `sdc` em sua todalidade (sem particionamento), formate com o filesystem `xfs`.
+
+	Essa tarefa do desafio não foi muito clara sobre como deveria ser o estado final do disco após a formatação, mas caso fosse
+	necessário deixar ele disponível pra uso seria necessário informar isso ao arquivo /etc/fstab, um arquivo em texto para a
+	configuração de dispositivos de armazenamento e pontos de montagem do GNU/Linux e que pode ser editado se você for um administrador
+	do sistema.
+	
+	Para servidores com mais de 16TB de espaço, é necessário usar um sistema de arquivos XFS ao invés de ext4. Normalmente,
+	isso funciona para 12x 3TB raid com 10 matrizes, que geram no total, 18TB de espaço. Com ext4 você fica com cerca de 400GB
+	de espaço. O pacote xfsprogs contém ferramentas de administração e depuração para o sistema de arquivos XFS.
+	
+	yum install xfsprogs xfsdump
+	mkfs.xfs /dev/sdc
