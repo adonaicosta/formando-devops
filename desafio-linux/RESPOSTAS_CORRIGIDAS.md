@@ -630,7 +630,7 @@ curl https://www.desafio.local
     ssl_certificate_key "/etc/pki/nginx/private/desafio.local.pem";
     sysmtemctl restart nginx
     
-    ! importante: dependendo do método escolhido para se gerar um novo par de chaves pode ser que seja exigido uma passphrase. No entanto,
+    Dependendo do método escolhido para se gerar um novo par de chaves pode ser que seja exigido uma passphrase. No entanto,
     o nginx não vai conseguir subir desse modo, e o que pode ser feito é remover a passphrase depois que a chave foi gerada:
     
     openssl rsa -in desafio.local.pem -out desafio.local.pem  
