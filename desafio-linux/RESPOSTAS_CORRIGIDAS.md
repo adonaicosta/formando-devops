@@ -481,7 +481,7 @@ Dica: para iniciar o serviço utilize o comando `systemctl start nginx`.
     com o sistema — estes são identificados pelo PID (process identifier) e é o caso, por exemplo, do nginx.
     
     A flag -t do nginx indica que num primeiro momento é feito um teste de sintaxe e uma tentativa de carregar as
-    informações presentes no arquivo arquivo de configuração, que é o /etc/nginx/nginx.conf. Como a saída
+    informações presentes no arquivo de configuração, que é o /etc/nginx/nginx.conf. Como a saída
     do log já indicava um erro crítico nesse arquivo [emerg] a busca pelo motivo da falha na inicializacao do serviço
     deveria continuar por ali. O arquivo de configuracao do nginx é menos critico que o arquivo da biblioteca para se
     realizar alterações, e nesse caso posso simplesmente corrigir os erros de sintaxe presentes no arquivo e testar
@@ -630,8 +630,8 @@ curl https://www.desafio.local
     ssl_certificate_key "/etc/pki/nginx/private/desafio.local.pem";
     sysmtemctl restart nginx
     
-    ! importante: no processo de criação da chave é exigido uma passphrase, mas o nginx não vai conseguir
-    subir desse modo, e o que pode ser feito é remover a passphrase depois que a chave foi gerada:
+    ! importante: dependendo do método escolhido para se gerar um novo par de chaves pode ser que seja exigido uma passphrase. No entanto,
+    o nginx não vai conseguir subir desse modo, e o que pode ser feito é remover a passphrase depois que a chave foi gerada:
     
     openssl rsa -in desafio.local.pem -out desafio.local.pem  
    
