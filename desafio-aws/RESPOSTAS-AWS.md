@@ -40,7 +40,7 @@ A página web dessa vez não está sendo exibida corretamente. Verifique as conf
 
   3.2 - Altere o texto da página web exibida, colocando seu nome no início do texto do arquivo "/var/www/html/index.html".
   
-    -> sed -i '1 i<h1>SEU NOME<h1>' /var/www/html/index.html
+    -> sed -i '1 i<h1>SEU NOME</h1>' /var/www/html/index.html
     
   ![img](https://github.com/Siluryan/Formando-Devops/blob/main/aws-expert/printdesafioaws.png)
     
