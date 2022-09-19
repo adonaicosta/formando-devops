@@ -2,7 +2,7 @@ Obs: não consegui encontrar nenhuma questão que fosse preciso tirar print, poi
 
 # Desafio AWS
 
-1 - Setup de ambiente
+#1 - Setup de ambiente
 
 Execute os mesmos passos de criação de ambiente descritos anteriormente, porém atenção: dessa vez utilize o arquivo "formandodevops-desafio-aws.json"
 
@@ -11,7 +11,7 @@ Execute os mesmos passos de criação de ambiente descritos anteriormente, poré
     aws cloudformation wait stack-create-complete --stack-name "$STACK_NAME"
     
   
-2 - Networking
+#2 - Networking
 
 A página web dessa vez não está sendo exibida corretamente. Verifique as configurações de rede que estão impedindo seu funcionamento.
 
@@ -19,7 +19,7 @@ A página web dessa vez não está sendo exibida corretamente. Verifique as conf
     -> O Cidr também estava errado, algo que já dava pra descobrir pelo próprio json usado pra criar o stack
     
     
-3 - EC2 Access
+#3 - EC2 Access
 
   Para acessar a EC2 por SSH, você precisa de uma key pair, que não está disponível. Pesquise como alterar a key pair de uma EC2.
   
@@ -45,14 +45,14 @@ A página web dessa vez não está sendo exibida corretamente. Verifique as conf
   ![img](https://github.com/Siluryan/Formando-Devops/blob/main/aws-expert/printdesafioaws.png)
     
 
-4 - EC2 troubleshooting
+#4 - EC2 troubleshooting
 
 No último procedimento, A EC2 precisou ser desligada e após isso o serviço responsável pela página web não iniciou. Encontre o problema e realize as devidas alterações para que esse serviço inicie automaticamente durante o boot da EC2.
 
     -> systemctl enable httpd
     
 
-5 - Balanceamento
+#5 - Balanceamento
 
 Crie uma cópia idêntica de sua EC2 e inicie essa segunda EC2. Após isso, crie um balanceador, configure ambas EC2 nesse balancedor e garanta que, mesmo com uma das EC2 desligada, o usuário final conseguirá acessar a página web.
 
@@ -62,7 +62,7 @@ Crie uma cópia idêntica de sua EC2 e inicie essa segunda EC2. Após isso, crie
     -> Criei um Application Load Balancer a partir desse grupo
     
 
-6 - Segurança
+#6 - Segurança
 
 Garanta que o acesso para suas EC2 ocorra somente através do balanceador, ou seja, chamadas HTTP diretamente realizadas da sua máquina para o EC2 deverão ser barradas. Elas só aceitarão chamadas do balanceador e esse, por sua vez, aceitará conexões externas normalmente.
 
