@@ -1,4 +1,4 @@
-resource "shell_script" "weather" {
+resource "shell_script" "install" {
   lifecycle_commands {
     create = <<-EOF
             apt install
