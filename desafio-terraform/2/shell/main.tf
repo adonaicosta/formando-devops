@@ -1,14 +1,9 @@
-provider "shell" {
-      source = "scottwinkler/shell"
-      version = "1.7.7"     
-}
-
-variable "install_pkgs" {
+variable "install_pkg" {
   description = "Packages to Install"
   type        = string  
 }
 
-variable "uninstall_pkgs" {
+variable "uninstall_pkg" {
   description = "Packages to Uninstall"
   type        = string  
 }

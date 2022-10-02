@@ -1,5 +1,4 @@
 #!/bin/bash
-
 pacote=$(dpkg --get-selections | grep $install_pkg ) 
 echo 
 echo -n "Verificando se o Pacote $install_pkg esta instalado."
