@@ -10,9 +10,4 @@ resource "shell_script" "scripts" {
     update = file("./scripts/update.sh")
     delete = file("./scripts/delete.sh")
   }
-
-  environment = {
-    NAME        = "Linux-management Automation"
-    DESCRIPTION = "Automação de tarefas num ambiente linux"
-  }
 }
