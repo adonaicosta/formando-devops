@@ -15,8 +15,8 @@ variable "uninstall_pkgs" {
 
 resource "shell_script" "scripts" {
   lifecycle_commands {
-    create = file("create.sh")
-    delete = file("delete.sh")    
-    update = file("update.sh")    
+    create = file("./scripts/create.sh")
+    delete = file("./scripts/delete.sh")    
+    update = file("./scripts/update.sh")    
   }
 }
