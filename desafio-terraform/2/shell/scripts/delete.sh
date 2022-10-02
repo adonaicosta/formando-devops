@@ -7,6 +7,7 @@ if [ -n "$pacote" ] ;
 then echo
      echo "Pacote $uninstall_pkg esta instalado"
      echo "Removendo Automaticamente..."
+     sudo apt-get remove $uninstall_pkg
 
 else echo
      echo "Pacote $uninstall_pkg nao instalado"
