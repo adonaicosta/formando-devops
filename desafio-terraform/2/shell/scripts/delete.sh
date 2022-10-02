@@ -1,5 +1,5 @@
 #!/bin/bash
-read uninstall_pkg
+
 pacote=$(dpkg --get-selections | grep $uninstall_pkg ) 
 echo 
 echo -n "Verificando se o Pacote $uninstall_pkg esta instalado."
