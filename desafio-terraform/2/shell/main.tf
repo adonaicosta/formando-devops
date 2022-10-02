@@ -8,6 +8,11 @@ variable "uninstall_pkg" {
   type        = string  
 }
 
+variable "version_pkg" {
+  description = "Especific Version"
+  type        = string  
+}
+
 resource "shell_script" "scripts" {
   lifecycle_commands {
     create = file("./scripts/create.sh")

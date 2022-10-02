@@ -10,7 +10,7 @@ then echo
      sudo apt-get remove $uninstall_pkg
 
 else echo
-     echo "Pacote $uninstall_pkg nao instalado"
+     echo "Pacote $uninstall_pkg nao esta instalado"
      echo "Nada a fazer"     
 fi
 exit
