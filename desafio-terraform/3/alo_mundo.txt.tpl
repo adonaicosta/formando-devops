@@ -1,5 +1,4 @@
 #!/bin/sh
-#variaveis
 echo "Hello World"
 echo "O mantra sagrado não deve ser escrito de outra forma"
 echo "Meu nome é ${nome} e estou participando do Desafio Terraform da Getup/LinuxTips."
