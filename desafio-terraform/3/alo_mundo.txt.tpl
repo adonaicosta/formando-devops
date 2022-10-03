@@ -9,7 +9,7 @@ LISTA_INDEX = 0
 CEM = 100
 #divisores
 while [ $INDEX -le $CEM ]; do
-    if [ ($CEM/$INDEX) == 0 ]; then
+    if [ ($CEM%$INDEX) == 0 ]; then
     LISTA[$LISTA_INDEX] = $INDEX
     let INDEX=INDEX+1;
     let LISTA_INDEX=LISTA_INDEX+1;
