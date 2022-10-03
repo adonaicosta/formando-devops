@@ -5,8 +5,7 @@ output "api_endpoint" {
 
 output "kubeconfig" {
   description = "Path to the kubeconfig file."
-  value       = kind_cluster.default.kubeconfig
-  
+  value       = kind_cluster.default.kubeconfig  
 }
 
 output "client_certificate" {
