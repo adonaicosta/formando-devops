@@ -23,9 +23,3 @@ variable "div_index" {
     type         = number 
     default      = 0  
 }
-
-variable "index" {
-    description = "Index"
-    type = "number"
-    default = 0
-}
