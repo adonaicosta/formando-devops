@@ -12,3 +12,20 @@ variable "div" {
     description = "Divisor"
     type        = number    
 }
+
+variable "div_list" {
+    description = "Lista de Divisores"
+    type        = list(number)
+}
+
+variable "div_index" {
+    description  = "Index para elementos da lista"
+    type         = number 
+    default      = 0  
+}
+
+variable "index" {
+    description = "Index"
+    type = "number"
+    default = 0
+}
