@@ -8,7 +8,7 @@ terraform {
 }
 
 provider "aws" {
-  region = "us-east-1"
+  region  = "us-east-1"
   profile = "dev" // https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html
 }
 
@@ -31,10 +31,10 @@ resource "aws_ami_from_instance" "sourceami" {
 
 # cria a nova instância ec2
 resource "aws_instance" "newinstance" {
-    ami           = aws_ami_from_instance.sourceami.id
-    instance_type = data.aws_instance.source_instance.instance_type
+    ami                    = aws_ami_from_instance.sourceami.id
+    instance_type          = data.aws_instance.source_instance.instance_type
     vpc_security_group_ids = data.aws_instance.source_instance.vpc_security_group_ids
-    subnet_id = data.aws_instance.source_instance.subnet_id
+    subnet_id              = data.aws_instance.source_instance.subnet_id
     tags = {
         Name = "${data.aws_instance.source_instance.tags.Name}-cloned"
     }
