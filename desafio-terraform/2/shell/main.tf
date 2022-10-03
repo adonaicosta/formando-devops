@@ -1,22 +1,15 @@
-variable "install_pkgs" {
-  description = "Packages to Install"
-  type        = string  
-}
-
-variable "uninstall_pkgs" {
-  description = "Packages to Uninstall"
-  type        = string  
-}
-
-variable "version_pkgs" {
-  description = "Especific Version"
-  type        = string  
-}
-
 resource "shell_script" "scripts" {
   lifecycle_commands {
-    create = file("./scripts/create.sh")
-    delete = file("./scripts/delete.sh")    
-    update = file("./scripts/update.sh")    
+    create = file("${path.module}/scripts/create.sh")
+    delete = file("${path.module}/scripts/delete.sh")    
+    update = file("${path.module}/scripts/update.sh")    
+  }
+
+  working_directory = "${path.module}"
+
+  environment = {
+    install_pkgs   = var.install_pkgs
+    uninstall_pkgs = var.uninstall_pkgs
+    version_pkgs   = var.version_pkgs  
   }
 }
