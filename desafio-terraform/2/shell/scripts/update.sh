@@ -6,10 +6,9 @@ sleep 2
 if [ -n "$pacote" ] ;
 then echo
      echo "Pacote $install_pkgs ja instalado"
-     echo "Removendo e instalando a nova versao"
+     echo "Removendo e instalando com a nova versao"
      sudo apt-get remove $install_pkgs
      sudo apt-get install $install_pkgs=$version_pkgs
-
 else echo
      echo "Pacote $install_pkgs nao esta instalado"
      echo "Saindo..."     
