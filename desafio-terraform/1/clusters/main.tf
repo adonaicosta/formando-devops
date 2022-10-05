@@ -17,7 +17,7 @@ resource "kind_cluster" "default" {
 
         node {
             role = "infra"      
-              
+        }
                     
         node {
             role =  "app"
