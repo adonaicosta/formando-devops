@@ -42,7 +42,7 @@ A página web dessa vez não está sendo exibida corretamente. Verifique as conf
   
     -> sed -i '1 i<h1>SEU NOME</h1>' /var/www/html/index.html
     
-  ![img](https://github.com/Siluryan/Formando-Devops/blob/main/aulas-aws-expert/printdesafioaws.png)
+  ![img](https://github.com/Siluryan/Formando-Devops/blob/main/aulas/aulas-aws-expert/printdesafioaws.png)
     
 
 # 4 - EC2 troubleshooting
