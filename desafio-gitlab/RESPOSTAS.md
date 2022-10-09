@@ -7,8 +7,12 @@ Passos que eu usei pra fazer o merge:
 - troquei para o branch master
 - git merge feature
 - git commit da master
-
+  
+1.
 ![img](https://github.com/Siluryan/Formando-Devops/blob/main/desafio-gitlab/imagens/gitlog.png)
+
+2.
+![img](https://github.com/Siluryan/Formando-Devops/blob/main/desafio-gitlab/imagens/gitlabcommit.png)
 
 # Link:
 
