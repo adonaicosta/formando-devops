@@ -12,6 +12,8 @@ Passos que eu usei pra fazer o merge:
 ![img](https://github.com/Siluryan/Formando-Devops/blob/main/desafio-gitlab/imagens/gitlog.png)
 
 2.
+![img](https://github.com/Siluryan/Formando-Devops/blob/main/desafio-gitlab/imagens/featurecli.png)
+
 ![img](https://github.com/Siluryan/Formando-Devops/blob/main/desafio-gitlab/imagens/gitlabcommit.png)
 
 # Link:
