@@ -16,9 +16,13 @@ Passos que eu usei pra fazer o merge:
 
 ![img](https://github.com/Siluryan/Formando-Devops/blob/main/desafio-gitlab/imagens/gitlabcommit.png)
 
-# Link:
+# Links:
 
+Página do desafio:
 https://siluryan-group1.gitlab.io/gitlabdesafio
+
+Repositório:
+https://gitlab.com/siluryan-group1/gitlabdesafio
 
 # Print da página:
 
