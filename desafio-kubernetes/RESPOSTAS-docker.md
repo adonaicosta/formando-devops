@@ -69,7 +69,7 @@
 	
 5. Execute um container da imagem nginx com limite de memória 128MB e 1/2 CPU.
 
-		docker container run -d -p 8080:80 --cpus="0.5" -m 128m nginx
+		docker container run -d -p 8080:80 --cpus 0.5 -m 128m nginx
 	
 	
 6. Qual o comando usado para limpar recursos como imagens, containers parados, cache de build e networks não utilizadas?
