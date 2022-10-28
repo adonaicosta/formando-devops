@@ -1,11 +1,11 @@
 1. Execute o comando hostname em um container usando a imagem alpine. Certifique-se que o container será removido após a execução.
 
-	docker container run alpine sh -c "hostname" && docker container prune
+		docker container run alpine sh -c "hostname" && docker container prune
 	
 
 2. Crie um container com a imagem nginx (versão 1.22), expondo a porta 80 do container para a porta 8080 do host.
 
-	docker container run -d -p 8080:80 nginx:1.22
+		docker container run -d -p 8080:80 nginx:1.22
 	
 
 3. Faça o mesmo que a questão anterior (2), mas utilizando a porta 90 no container. O arquivo de configuração do nginx deve existir no host e ser read-only no container.
@@ -69,14 +69,14 @@
 	
 5. Execute um container da imagem nginx com limite de memória 128MB e 1/2 CPU.
 
-	docker container run -d -p 8080:80 --cpus="0.5" -m 128m nginx
+		docker container run -d -p 8080:80 --cpus="0.5" -m 128m nginx
 	
 	
 6. Qual o comando usado para limpar recursos como imagens, containers parados, cache de build e networks não utilizadas?
 
-	docker system prune -a
+		docker system prune -a
 	
 	
 7. Como você faria para extrair os comandos Dockerfile de uma imagem?
 
-	docker image history [nome_da_imagem]
+		docker image history [nome_da_imagem]
