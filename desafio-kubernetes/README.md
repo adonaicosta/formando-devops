@@ -12,10 +12,10 @@ As questões abaixo devem ser respondidas no arquivo [RESPOSTAS-docker.md](RESPO
 
 ```python
 def main():
-   print('Hello World in Python!')
+    print('Hello World in Python!')
 
 if __name__ == '__main__':
-  main()
+    main()
 ```
 
 5. Execute um container da imagem `nginx` com limite de memória 128MB e 1/2 CPU.
